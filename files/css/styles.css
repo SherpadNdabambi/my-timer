@@ -1,0 +1,64 @@
+body {
+  	font-family: 'Arial', sans-serif;
+	text-align: center;
+}
+
+.btn:active {
+	width: 61px;
+}
+
+button{
+	background-color: white;
+	border: none;
+	cursor: pointer;
+	outline: none;
+}
+
+.centered{
+	margin: 0;
+	-ms-transform: translate(-50%, -50%);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+#countdownLabel{
+	font-family: digital-7;
+	font-size: 64px;
+	height: 80px;
+}
+
+@font-face{
+	font-family: digital-7;
+	src: url("../fonts/digital-7 (mono).ttf");
+}
+
+.hidden{
+	display: none;
+}
+
+#pauseIcon:hover{
+	opacity: 0.75;
+}
+
+#phaseLabel{
+	font-size: 38px;
+	height: 60px;
+}
+
+#playIcon:hover{
+	opacity: 0.5;
+}
+
+#sessionForm{
+	height: 60px;
+}
+
+#stopIcon:hover{
+	opacity: 0.5;
+}
+
+#taskName{
+	text-align: center;
+}
