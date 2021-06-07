@@ -15,7 +15,12 @@ $query = "select * from user where email = '$email' and password = '$password'";
 $result = $sqlConnection->query($query);
 
 if ($result->num_rows == 1){
-	echo ":) :) LOGIN SUCCESS :) :) ";
+	session_start();
+	$select_username_query = "select username from user where email = '$email' and password = '$password'";
+	$result = $sqlConnection->query($select_username_query);
+	$_SESSION["username"] = $result->fetch_assoc()["username"];
+	$sessionUser = $_SESSION["username"];
+	header("location: ../../index.php");
 }
 
 else {
