@@ -1,6 +1,3 @@
-//Check login
-if(!localStorage.getItem("user")) window.location.replace("login.html");
-
 //Global variables
 let alarmSound = new Audio("files/sounds/tick-sound.wav"), breakIteration = 1, startTime, tickSound = new Audio("files/sounds/alarm-sound.wav"), timeLeft, workIteration = 1, timeElapsed = new Time(), timePaused;
 
