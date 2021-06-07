@@ -1,5 +1,6 @@
 <?php
-if($_SESSION["username"]) header("location: login.html");
+session_start();
+if(!$_SESSION["username"]) header("location: login.html");
 ?>
 
 <!DOCTYPE html>
@@ -15,6 +16,8 @@ if($_SESSION["username"]) header("location: login.html");
 </head>
 
 <body onload="onPageLoad()" onunload="onPageUnload()">
+
+	
 
 	<div class="centered">
 
