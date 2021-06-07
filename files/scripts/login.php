@@ -1,34 +1,24 @@
 <?php
 
-$sqlConnection = new mysqli("localhost:/var/lib/mysql/mysql.sock", "root", "root", "my_timer") or die("Connection failed: " .$sqlConnection->connect_error);
+$sqlConnection = new mysqli("localhost", "root", "root", "my_timer") or die("Connection failed: " .$sqlConnection->connect_error);
 
-$sqlConnection -> select_db("my_timer") or die ("cannot select database:  " .$sqlConnection->connect_error);
-
+$email = $_POST['email'];
+$password = $_POST['password'];
 /*
-$loginEmail  = $_POST['emailAddress'];
+$email = stripslashes($email);
+$password = stripslashes($password);
+$email = mysql_real_escape_string($email);
+$password = mysql_real_escape_string($password);
+*/
 
-$loginPassword  = $_POST['password'];
+$query = "select * from user where email = '$email' and password = '$password'";
+$result = $sqlConnection->query($query);
 
-$loginEmail = stripslashes($loginEmail);
-
-$loginPassword = stripslashes($loginPassword);
-
-$loginEmail = mysql_real_escape_string($loginEmail);
-
-$loginPassword = mysql_real_escape_string($loginPassword);
-
-$sql = "select * from $table_name where emailAddress = '$loginEmail' AND password = '$loginPassword'";
-
-$result = mysql_query($sql, $connection);
-
-$count = mysql_num_rows($result);
-
-if ($count == 1){
+if ($result->num_rows == 1){
 	echo ":) :) LOGIN SUCCESS :) :) ";
 }
 
 else {
-	echo ":( :( AUTHETICATION FAILURE :( :( ";
+	echo "User with email address '$email' not found.";
 }
-*/
 ?>
