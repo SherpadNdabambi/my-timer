@@ -17,7 +17,7 @@ if(!$_SESSION["username"]) header("location: login.html");
 
 <body onload="onPageLoad()" onunload="onPageUnload()">
 
-	
+	<button id="accountButton" onclick="show()"></button>
 
 	<div class="centered">
 
@@ -44,6 +44,7 @@ if(!$_SESSION["username"]) header("location: login.html");
 	</div>
 
 	<script type="text/javascript" src="files/scripts/time.js"></script>
+	<script type="text/javascript" src="files/scripts/scripts.js"></script>
 	<script type="text/javascript" src="files/scripts/index.js"></script>
 
 </body>

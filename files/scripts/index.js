@@ -52,9 +52,8 @@ function calculateElapsedTime(){
 
 //Control events
 function play(){
-	document.getElementById("playIcon").style.display = "none";
-	document.getElementById("pauseIcon").style.display = "block";
-	document.getElementById("stopIcon").style.display = "block";
+	hide(playIcon);
+	show(pauseIcon, stopIcon);
 	document.getElementById("pauseButton").focus();
 	document.getElementById("playButton").disabled = true;
 	document.getElementById("pauseButton").disabled = false;
@@ -63,9 +62,8 @@ function play(){
 }
 
 function pause(){
-	document.getElementById("playIcon").style.display = "block";
-	document.getElementById("pauseIcon").style.display = "none";
-	document.getElementById("stopIcon").style.display = "none";
+	hide(pauseIcon, stopIcon);
+	show(playIcon);
 	document.getElementById("playButton").focus();
 	document.getElementById("playButton").disabled = false;
 	document.getElementById("pauseButton").disabled = true;
@@ -73,9 +71,8 @@ function pause(){
 }
 
 function stop(){
-	document.getElementById("playIcon").style.display = "block";
-	document.getElementById("pauseIcon").style.display = "none";
-	document.getElementById("stopIcon").style.display = "none";
+	hide(pauseIcon, stopIcon);
+	show(playIcon);
 	document.getElementById("playButton").focus();
 	document.getElementById("playButton").disabled = false;
 	document.getElementById("pauseButton").disabled = true;
