@@ -1,10 +1,10 @@
+#accountIcon:active {
+	width: 22px;
+}
+
 body {
   	font-family: 'Arial', sans-serif;
 	text-align: center;
-}
-
-.btn:active {
-	width: 61px;
 }
 
 button{
@@ -15,12 +15,16 @@ button{
 }
 
 .centered{
+	left: 50%;
 	margin: 0;
 	-ms-transform: translate(-50%, -50%);
 	position: absolute;
 	top: 50%;
-	left: 50%;
 	transform: translate(-50%, -50%);
+}
+
+.control:active {
+	width: 61px;
 }
 
 #countdownLabel{
@@ -61,4 +65,10 @@ button{
 
 #taskName{
 	text-align: center;
+}
+
+.top-right{
+	margin: 0;
+	position: absolute;
+	right: 0%;
 }

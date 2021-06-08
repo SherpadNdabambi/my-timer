@@ -17,7 +17,7 @@ if(!$_SESSION["username"]) header("location: login.html");
 
 <body onload="onPageLoad()" onunload="onPageUnload()">
 
-	<button id="accountButton" onclick="show()"></button>
+	<button id="accountButton" onclick="show()" class="top-right"> <img id="accountIcon" src="files/images/icons8-user-24.png"> </button>
 
 	<div class="centered">
 
@@ -37,9 +37,9 @@ if(!$_SESSION["username"]) header("location: login.html");
 
 		</form>
 
-		<button id="playButton" onclick="play()"> <img id="playIcon" src="files/images/play.png" class="btn"> </button>
-		<button id="pauseButton" onclick="pause()"> <img id="pauseIcon" src="files/images/pause.png" class="btn"> </button>
-		<button id="stopButton" onclick="stop()"> <img id="stopIcon" src="files/images/stop.png" class="btn"> </button>
+		<button id="playButton" onclick="play()"> <img id="playIcon" src="files/images/play.png" class="control"> </button>
+		<button id="pauseButton" onclick="pause()"> <img id="pauseIcon" src="files/images/pause.png" class="control"> </button>
+		<button id="stopButton" onclick="stop()"> <img id="stopIcon" src="files/images/stop.png" class="control"> </button>
 
 	</div>
 
