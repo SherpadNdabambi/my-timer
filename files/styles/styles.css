@@ -2,6 +2,13 @@
 	width: 22px;
 }
 
+#accountPanel{
+	background-color: navy;
+	height: 100%;
+	margin: 0;
+	width: 20%;
+}
+
 body {
   	font-family: 'Arial', sans-serif;
 	text-align: center;
@@ -67,7 +74,7 @@ button{
 	text-align: center;
 }
 
-.top-right{
+.right{
 	margin: 0;
 	position: absolute;
 	right: 0%;

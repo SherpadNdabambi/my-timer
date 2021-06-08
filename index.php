@@ -17,7 +17,13 @@ if(!$_SESSION["username"]) header("location: login.html");
 
 <body onload="onPageLoad()" onunload="onPageUnload()">
 
-	<button id="accountButton" onclick="show()" class="top-right"> <img id="accountIcon" src="files/images/icons8-user-24.png"> </button>
+	<button id="accountButton" onclick="show()" class="right"> <img id="accountIcon" src="files/images/icons8-user-24.png"> </button>
+
+	<div id="accountPanel" class="right">
+		
+		<button id="accountButton" onclick="show()" class="centered"> <img id="accountIcon" src="files/images/icons8-user-24.png"> </button>
+
+	</div>
 
 	<div class="centered">
 
