@@ -2,9 +2,9 @@
 
 session_start();
 
-if(!$_SESSION["userID"]) header("location: login.html");
+if(!$_SESSION["userID"]) header("location: login.php");
 
-//create connection database
+//create connection to database
 $sqlConnection = new mysqli("localhost", "root", "root", "my_timer") or die("Connection failed: " .$sqlConnection->connect_error);
 
 //get username from database
@@ -19,7 +19,7 @@ if(isset($_POST["logoutButton"])) logout();
 
 function logout(){
 	$_SESSION["userID"] = null;
-	header("location: login.html");
+	header("location: login.php");
 }
 
 ?>
