@@ -15,10 +15,10 @@ $query = "select * from user where email = '$email' and password = '$password'";
 $result = $sqlConnection->query($query);
 
 if ($result->num_rows == 1){
-	session_start();
-	$select_username_query = "select username from user where email = '$email' and password = '$password'";
+	$select_username_query = "select id from user where email = '$email' and password = '$password'";
 	$result = $sqlConnection->query($select_username_query);
-	$_SESSION["username"] = $result->fetch_assoc()["username"];
+	session_start();
+	$_SESSION["userID"] = $result->fetch_assoc()["id"];
 	header("location: ../../index.php");
 }
 

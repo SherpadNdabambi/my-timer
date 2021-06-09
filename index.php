@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!$_SESSION["username"]) header("location: login.html");
+if(!$_SESSION["userID"]) header("location: login.html");
 ?>
 
 <!DOCTYPE html>
