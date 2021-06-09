@@ -9,7 +9,8 @@ if(isset($_POST["logoutButton"])) logout();
 if(isset($_POST["logoutButton"])) logout();
 
 function logout(){
-	// code...
+	$_SESSION["userID"] = null;
+	header("location: login.html");
 }
 
 ?>
