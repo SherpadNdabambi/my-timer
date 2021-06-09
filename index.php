@@ -4,6 +4,15 @@ session_start();
 
 if(!$_SESSION["userID"]) header("location: login.html");
 
+//create connection database
+$sqlConnection = new mysqli("localhost", "root", "root", "my_timer") or die("Connection failed: " .$sqlConnection->connect_error);
+
+//get username from database
+$userID = $_SESSION["userID"];
+$select_username_query = "Select username from user where id = '$userID'";
+$result = $sqlConnection->query($select_username_query);
+$username = $result->fetch_assoc()["username"];
+
 if(isset($_POST["logoutButton"])) logout();
 
 if(isset($_POST["logoutButton"])) logout();
@@ -35,7 +44,7 @@ function logout(){
 		
 		<button id="accountButton" onclick="hide(accountPanel)"> <img id="accountIcon" src="files/images/icons8-user-24.png"> </button>
 
-		<br><span id="username"> Username </span>
+		<br><?php echo "$username"; ?>
 
 		<hr>
 
