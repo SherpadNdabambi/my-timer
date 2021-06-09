@@ -2,14 +2,10 @@
 
 $sqlConnection = new mysqli("localhost", "root", "root", "my_timer") or die("Connection failed: " .$sqlConnection->connect_error);
 
-$email = $_POST['email'];
-$password = $_POST['password'];
-/*
+$email = $_POST["email"];
+$password = $_POST["password"];
 $email = stripslashes($email);
 $password = stripslashes($password);
-$email = mysql_real_escape_string($email);
-$password = mysql_real_escape_string($password);
-*/
 
 $select_user_query = "select * from user where email = '$email' and password = '$password'";
 $result = $sqlConnection->query($select_user_query);
@@ -23,6 +19,7 @@ if ($result->num_rows == 1){
 }
 
 else {
-	echo "User with email address '$email' not found.";
+	echo "Invalid email address and/or password.";
 }
+
 ?>
