@@ -10,9 +10,8 @@ function onPageLoad(){
 	timeLeft = workTime;
 	document.getElementById("countdownLabel").innerHTML = timeLeft.toString("MMSS");
 	updatePageTitle();
-	document.getElementById("playIcon").style.display = "block";
-	document.getElementById("pauseIcon").style.display = "none";
-	document.getElementById("stopIcon").style.display = "none";
+	hide(accountPanel, pauseIcon, stopIcon);
+	show(playIcon);
 	document.getElementById("playButton").focus();
 	document.getElementById("playButton").disabled = false;
 	document.getElementById("pauseButton").disabled = true;
