@@ -1,6 +1,12 @@
 <?php
+
 session_start();
 if(!$_SESSION["userID"]) header("location: login.html");
+if(isset($_POST["logoutButton"])) logout();
+function logout(){
+	// code...
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -17,11 +23,19 @@ if(!$_SESSION["userID"]) header("location: login.html");
 
 <body onload="onPageLoad()" onunload="onPageUnload()">
 
-	<button id="accountButton" onclick="show()" class="right"> <img id="accountIcon" src="files/images/icons8-user-24.png"> </button>
+	<button id="accountButton" onclick="show(accountPanel)" class="right"> <img id="accountIcon" src="files/images/icons8-user-24.png"> </button>
 
-	<div id="accountPanel" class="right">
+	<div id="accountPanel" class="hidden; right">
 		
-		<button id="accountButton" onclick="show()" class="centered"> <img id="accountIcon" src="files/images/icons8-user-24.png"> </button>
+		<button id="accountButton" onclick="hide(accountPanel)"> <img id="accountIcon" src="files/images/icons8-user-24.png"> </button>
+
+		<br><span id="username"> Username </span>
+
+		<hr>
+
+		<form method="post">
+			<input type="submit" name="logoutButton" value="Logout">
+		</form>
 
 	</div>
 
