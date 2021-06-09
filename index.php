@@ -6,6 +6,8 @@ if(!$_SESSION["userID"]) header("location: login.html");
 
 if(isset($_POST["logoutButton"])) logout();
 
+if(isset($_POST["logoutButton"])) logout();
+
 function logout(){
 	// code...
 }
