@@ -2,11 +2,35 @@
 let alarmSound = new Audio("files/sounds/alarm-sound.wav"), breakIteration, dateStarted, dateStopped, pauseTimer = new Timer(), phase, tickSound = new Audio("files/sounds/tick-sound.wav"), timeElapsed, timeLeft, timePaused, timer = new Timer(), timeStarted, workIteration;
 
 //initialize setting variables
-let breakReminder = true, breakReminderTime = new Time("0:01:30"), longBreakTime = new Time("0:20:00"), pauseReminder = true, pauseTimeLimit = new Time("0:02:00"), playTickSound = true, shortBreakTime = new Time("0:05:00"), workTime = new Time("0:25:00");
+let breakReminder = true, breakReminderTime = new Time("0:01:30"), longBreakTime = new Time("0:20:00"), pauseReminder = true, pauseTimeLimit = new Time("0:02:00"), playTickSound = true, shortBreakTime = new Time("0:05:00"), workTime = new Time("0:25:0");
+
+function addContextMenu() {
+	if (document.addEventListener) {
+  	document.addEventListener('contextmenu', function(e) {
+  		document.getElementById("breakReminderTime").innerHTML = breakReminderTime.toString("MMSS");
+    	show(document.getElementById("contextMenu"));
+    	e.preventDefault();
+  		contextMenu.style.setProperty('--mouse-x', event.clientX + 'px');
+  		contextMenu.style.setProperty('--mouse-y', event.clientY + 'px');
+  	}, false);
+	} else {
+  	document.attachEvent('oncontextmenu', function() {
+    	show(document.getElementById("contextMenu"));
+    	window.event.returnValue = false;
+  	});
+	}
+}
 
 function displayTimer(){
 	document.getElementById("phaseLabel").innerHTML = phase;
 	updatePageTitle();
+	document.getElementById("countdownLabel").innerHTML = timeLeft.toString("MMSS");
+}
+
+function jumpToReminder() {
+	let jumpTime = new Time(breakReminderTime.toString());
+	jumpTime.addSeconds(1);
+	timeLeft = jumpTime;
 	document.getElementById("countdownLabel").innerHTML = timeLeft.toString("MMSS");
 }
 
@@ -24,6 +48,7 @@ function InitiateNextPhase(){
 function onPageLoad(){
 	initializeTimer();
 	displayTimer();
+	addContextMenu();
 }
 
 function pause(){
@@ -34,6 +59,10 @@ function pause(){
 	timePaused = new Time();
 	timer.stop();
 	pauseTimer.start();
+}
+
+function skipPhase() {
+	timeLeft = new Time("0:0:1");
 }
 
 function start(){
@@ -70,7 +99,7 @@ timer.tick = function(){
 		else{
 			timeLeft.addSeconds(-1);
 			document.getElementById("countdownLabel").innerHTML = timeLeft.toString("MMSS");
-			if(breakReminder && timeLeft == breakReminderTime){
+			if(breakReminder && timeLeft.toString() == breakReminderTime.toString()){
 				if(workIteration < 4) alert("Short break will start in " + timeLeft.toString("MMSS"));
 				else alert("Long break will start in " + timeLeft.toString());
 				if(timeLeft.toString() == "00:00:00") InitiateNextPhase();

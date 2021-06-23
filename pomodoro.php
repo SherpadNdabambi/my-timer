@@ -41,9 +41,16 @@ function logout(){
 
 <body onload="onPageLoad()" onunload="onPageUnload()">
 
+	<div id="contextMenu" class="context-menu hidden">
+
+		<div class="context-menu-item" onclick="jumpToReminder()">Jump to <span id="breakReminderTime"></span></div>
+		<div class="context-menu-item" onclick="skipPhase()">Next phase</div>
+
+	</div>
+
 	<button id="accountButton" onclick="show(accountPanel)" class="right"> <img id="accountIcon" src="files/images/icons8-user-24.png"> </button>
 
-	<div id="accountPanel" class="hidden right">
+	<div id="accountPanel" class="context-menu hidden right">
 		
 		<button id="accountButton" onclick="hide(accountPanel)"> <img id="accountIcon" src="files/images/icons8-user-24.png"> </button>
 
