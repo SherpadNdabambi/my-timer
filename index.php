@@ -8,7 +8,7 @@ if($_SESSION["userID"]){
 
 	//get timer_mode from database
 	$user_id = $_SESSION["userID"];
-	$select_timer_mode_query = "select timer_mode from setting where id = '$user_id'";
+	$select_timer_mode_query = "select timer_mode from settings where id = '$user_id'";
 	$result = $sqlConnection->query($select_timer_mode_query);
 	$timer_mode = $result->fetch_assoc()["timer_mode"];
 
@@ -19,8 +19,6 @@ if($_SESSION["userID"]){
 	if($timer_mode = "pomodoro") header("location: pomodoro.php");
 	else header("location: stopwatch.php");
 }
-else{
-	header("location: login.php");
-}
+else header("location: login.php");
 
 ?>
