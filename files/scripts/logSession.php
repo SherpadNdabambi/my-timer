@@ -1,21 +1,21 @@
 <?php
 
-$host="localhost";
+$sqlConnection = new mysqli("localhost", "root", "root", "my_timer") or die("Connection failed: " .$sqlConnection->connect_error);
 
-$username="root";
+//get session data from session form
+$task_name = $_POST["task_name"];
+$start_date = $_POST["start_date"];
+$start_time = $_POST["start_time"];
+$stop_time = $_POST["stop_time"];
+$time_elapsed = $_POST["time_elapsed"];
 
-$password="root";
+//to prevent sql injection
+$task_name = stripslashes($task_name);
+$start_date = stripslashes($start_date);
+$start_time = stripslashes($start_time);
+$stop_time = stripslashes($stop_time);
+$time_elapsed = stripslashes($time_elapsed);
 
-$db_name="my_timer";
 
-$tbl_name="session";
-
-$conn = mysql_connect("$host", "$username", "$password")or die("cannot connect");
-
-mysql_select_db("$db_name")or die("cannot select DB");
-
-$myusername=$_POST['usr'];
-
-$mypassword=$_POST['pwd'];
 
 ?>

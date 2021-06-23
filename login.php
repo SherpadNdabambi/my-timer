@@ -18,10 +18,14 @@
 		<input type="password" name="password" placeholder="Password"><br><br>
 		<?php
 			if(isset($_POST["submitButton"])){
+				//create connection to database
 				$sqlConnection = new mysqli("localhost", "root", "root", "my_timer") or die("Connection failed: " .$sqlConnection->connect_error);
 
+				//get login details from form
 				$email = $_POST["email"];
 				$password = $_POST["password"];
+
+				//to prevent sql injection
 				$email = stripslashes($email);
 				$password = stripslashes($password);
 
@@ -38,6 +42,9 @@
 				else{
 					echo "<span style='color: red'> Invalid email address and/or password. </span><br><br>";
 				}
+
+				//close connection to database
+				$sqlConnection->close();
 			}
 		?>
 		<input type="submit" name="submitButton" value="Login">
