@@ -35,7 +35,7 @@ function logout(){
 
 	<title>My Timer</title>
 
-	<link rel="stylesheet" type="text/css" href="files/styles/styles.css">
+	<link rel="stylesheet" type="text/css" href="files/css/styles.css">
 
 </head>
 
