@@ -3,9 +3,9 @@ class Time{
 	constructor(timeString = "0:0:0"){
 
 		let timeArray = timeString.split(':');
-		this.hours = timeArray[0];
-		this.minutes = timeArray[1];
-		this.seconds = timeArray[2];
+		this.hours = parseInt(timeArray[0]);
+		this.minutes = parseInt(timeArray[1]);
+		this.seconds = parseInt(timeArray[2]);
 
 	}
 
@@ -98,17 +98,17 @@ class Time{
 		format = format.toUpperCase();
 
 		if(format.includes("HH")){
-			if(this.hours < 10) timeString = "0" + this.hours;
-			else timeString = this.hours;
+			if(this.hours < 10) timeString = '0' + this.hours;
+			else timeString = this.hours + '';
 		}
 		if(format.includes("MM")){
-			if(timeString.length > 0) timeString += ":";
-			if(this.minutes < 10) timeString += "0" + this.minutes;
+			if(timeString.length > 0) timeString += ':';
+			if(this.minutes < 10) timeString += '0' + this.minutes;
 			else timeString += this.minutes;
 		}
 		if(format.includes("SS")){
-			if(timeString.length > 0) timeString += ":";
-			if(this.seconds < 10) timeString += "0" + this.seconds;
+			if(timeString.length > 0) timeString += ':';
+			if(this.seconds < 10) timeString += '0' + this.seconds;
 			else timeString += this.seconds;
 		}
 
