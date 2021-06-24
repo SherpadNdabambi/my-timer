@@ -5,20 +5,16 @@ let alarmSound = new Audio("files/sounds/alarm-sound.wav"), breakIteration, date
 let breakReminder = true, breakReminderTime = new Time("0:01:30"), longBreakTime = new Time("0:20:00"), pauseReminder = true, pauseTimeLimit = new Time("0:02:00"), playTickSound = true, shortBreakTime = new Time("0:05:00"), workTime = new Time("0:25:0");
 
 function addContextMenu() {
-	if (document.addEventListener) {
-  	document.addEventListener('contextmenu', function(e) {
+	  document.addEventListener('contextmenu', function(e) {
   		document.getElementById("breakReminderTime").innerHTML = breakReminderTime.toString("MMSS");
     	show(document.getElementById("contextMenu"));
     	e.preventDefault();
   		contextMenu.style.setProperty('--mouse-x', event.clientX + 'px');
   		contextMenu.style.setProperty('--mouse-y', event.clientY + 'px');
   	}, false);
-	} else {
-  	document.attachEvent('oncontextmenu', function() {
-    	show(document.getElementById("contextMenu"));
-    	window.event.returnValue = false;
-  	});
-	}
+  	document.addEventListener('click', function(e){
+  		hide(contextMenu);
+	});
 }
 
 function displayTimer(){
