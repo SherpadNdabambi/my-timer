@@ -38,7 +38,18 @@ function initializeTimer(){
 }
 
 function InitiateNextPhase(){
-	
+	timer.stop();
+	alarmSound.play();
+	if(/Work/.test(phase)){
+		if(workIteration < 4){
+			phase = "Short Break (" + breakIteration + "/3)";
+			timeLeft = new Time(shortBreakTime);
+			workIteration++;
+		}
+		else{
+			if(confirm("Your session is complete. Do you wish to continue working?"))
+		}
+	}
 }
 
 function onPageLoad(){
