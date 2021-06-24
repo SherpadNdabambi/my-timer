@@ -32,6 +32,7 @@ function jumpToReminder() {
 	jumpTime.addSeconds(1);
 	timeLeft = jumpTime;
 	document.getElementById("countdownLabel").innerHTML = timeLeft.toString("MMSS");
+	hide(contextMenu);
 }
 
 function initializeTimer(){
