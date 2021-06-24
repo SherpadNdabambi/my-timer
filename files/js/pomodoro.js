@@ -12,7 +12,7 @@ function addContextMenu() {
   		contextMenu.style.setProperty('--mouse-x', event.clientX + 'px');
   		contextMenu.style.setProperty('--mouse-y', event.clientY + 'px');
   	}, false);
-  	document.addEventListener('click', function(e){
+  	document.addEventListener('click', function(){
   		hide(contextMenu);
 	});
 }
