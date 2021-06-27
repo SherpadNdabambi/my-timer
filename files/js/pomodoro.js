@@ -23,6 +23,14 @@ function displayTimer(){
 	countdownLabel.innerHTML = timeLeft.toString("MMSS");
 }
 
+function endSession(){
+	timer.stop();
+	calculateElapsedTime();
+	sessionForm.submit();
+	initializeTimer();
+	displayTimer();
+}
+
 function initializeTimer(){
 	breakIteration = 1;
 	workIteration = 1;
