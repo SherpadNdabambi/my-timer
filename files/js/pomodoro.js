@@ -34,7 +34,8 @@ function displayTimer(){
 
 function endSession(){
 	timer.stop();
-	calculateElapsedTime();
+	calculateTimeWorked();
+	if(!taskName.value) taskName.value = taskName.placeholder;
 	sessionForm.submit();
 	initializeTimer();
 	displayTimer();
@@ -75,7 +76,7 @@ function initiateNextPhase(){
 		if(breakIteration < 4){
 			phase = "Work (" + workIteration + "/4)";
 			phaseLabel.innerHTML = phase;
-			timeLeft = new Time(workTime);
+			timeLeft = new Time(workTime.toString());
 			timer.start();
 			breakIteration++;
 		}
