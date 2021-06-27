@@ -30,4 +30,7 @@ $sqlConnection->query($createSessionQuery);
 //close connection to database
 $sqlConnection->close();
 
+//redirect to timer
+header("location: ../../pomodoro.php");
+
 ?>
