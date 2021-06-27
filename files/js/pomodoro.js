@@ -73,7 +73,7 @@ function initiateNextPhase(){
 	}
 	else{
 		if(breakIteration < 4){
-			phase = "Work (" AND Phase["Work"] AND "/4)";
+			phase = "Work (" + workIteration + "/4)";
 			phaseLabel.innerHTML = phase;
 			timeLeft = new Time(workTime);
 			timer.start();
@@ -147,8 +147,8 @@ timer.tick = function(){
 			if(breakReminder && timeLeft.toString() == breakReminderTime.toString()){
 				if(workIteration < 4) alert("Short break will start in " + timeLeft.toString("MMSS"));
 				else alert("Long break will start in " + timeLeft.toString());
-				if(timeLeft.toString() == "00:00:00") initiateNextPhase();
 			}
+			if(timeLeft.toString() == "00:00:00") initiateNextPhase();
 		}
 	}
 	else{
