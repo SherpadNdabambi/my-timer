@@ -75,6 +75,7 @@ function logout(){
 			<input id="taskName" name="task_name" onblur="this.placeholder = 'Unnamed Task'" onfocus="this.placeholder = ''" placeholder="Unnamed Task">
 			<input id="dateStarted" name="date_started" class="hidden">
 			<input id="dateStopped" name="date_stopped" class="hidden">
+			<input id="dateStopped" name="time_stopped" class="hidden">
 			<input id="timeStarted" name="time_started" class="hidden">
 			<input id="timeStopped" name="time_stopped" class="hidden">
 			<input id="timeWorked" name="time_worked" class="hidden">
