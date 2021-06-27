@@ -54,7 +54,7 @@ function initiateNextPhase(){
 		if(workIteration < 4){
 			phase = "Short Break (" + breakIteration + "/3)";
 			phaseLabel.innerHTML = phase;
-			timeLeft = new Time(shortBreakTime);
+			timeLeft = new Time(shortBreakTime.toString());
 			workIteration++;
 		}
 		else{
@@ -66,7 +66,7 @@ function initiateNextPhase(){
 			else{
 				phase = "Long Break";
 				phaseLabel.innerHTML = phase;
-				timeLeft = new Time(longBreakTime);
+				timeLeft = new Time(longBreakTime.toString());
 			}
 		}
 		timer.start();
