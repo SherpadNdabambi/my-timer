@@ -56,6 +56,8 @@ function initiateNextPhase(){
 			phaseLabel.innerHTML = phase;
 			timeLeft = new Time(shortBreakTime);
 			workIteration++;
+			pauseTimer = new Timer();
+			pauseTimer.start();
 		}
 		else{
 			if(confirm("Your session is complete. Do you wish to continue working?")){
