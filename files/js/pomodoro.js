@@ -19,9 +19,9 @@ function addContextMenu() {
 
 function calculateTimeWorked(){
 	timeWorked = new Time();
-	timeWorked.hours = workIteration - 1 x workTime.hours;
-	timeWorked.minutes = workIteration - 1 x workTime.minutes;
-	timeWorked.seconds = workIteration - 1 x workTime.seconds;
+	timeWorked.hours = (workIteration - 1) * workTime.hours;
+	timeWorked.minutes = (workIteration - 1) * workTime.minutes;
+	timeWorked.seconds = (workIteration - 1) * workTime.seconds;
 	if(/Work/.test(phase)) if(phase = "Extra Work Time") timeWorked = timeWorked.plus(workTime);
 	else timeWorked = timeWorked.plus(workTime.minus(timeLeft));
 }
