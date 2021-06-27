@@ -73,12 +73,11 @@ function logout(){
 		<form id="sessionForm" action="files/logSession.php" method="post">
 
 			<input id="taskName" name="task_name" onblur="this.placeholder = 'Unnamed Task'" onfocus="this.placeholder = ''" placeholder="Unnamed Task">
-
-			<input id="startDate" name="start_date" class="hidden">
-		
-			<input id="startTime" name="start_time" class="hidden">
-			<input id="stopTime" name="stop_time" class="hidden">
-			<input id="timeElapsed" name="time_elapsed" class="hidden">
+			<input id="dateStarted" name="date_started" class="hidden">
+			<input id="dateStopped" name="date_stopped" class="hidden">
+			<input id="timeStarted" name="time_started" class="hidden">
+			<input id="timeStopped" name="time_stopped" class="hidden">
+			<input id="timeWorked" name="time_worked" class="hidden">
 
 		</form>
 
