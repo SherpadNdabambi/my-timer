@@ -69,7 +69,7 @@ function logout(){
 		<div id="phaseLabel">Work (1/4)</div>
 	
 		<div id="countdownLabel">25:00</div>
-	
+
 		<form id="sessionForm" action="files/php/logPomodoroSession.php" method="post">
 
 			<input id="taskName" name="task_name" onblur="this.placeholder = 'Unnamed Task'" onfocus="this.placeholder = ''" placeholder="Unnamed Task">
