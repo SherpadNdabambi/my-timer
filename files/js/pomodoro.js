@@ -1,11 +1,11 @@
 //declare global variables
-let alarmSound = new Audio("files/sounds/alarm-sound.wav"), breakIteration, dateStarted, dateStopped, pauseTimer = new Timer(), phase, tickSound = new Audio("files/sounds/tick-sound.wav"), timeWorked, timeLeft, timePaused = new Time(), timer = new Timer(), timeStarted, workIteration;
+let alarmSound = new Audio("files/sounds/alarm-sound.wav"), breakIteration, pauseTimer = new Timer(), phase, tickSound = new Audio("files/sounds/tick-sound.wav"), timeLeft, timePaused = new Time(), timer = new Timer(), timeWorked = new Time(), workIteration;
 
 //initialize setting variables
 let breakReminder = true, breakReminderTime = new Time("0:01:30"), longBreakTime = new Time("0:20:00"), pauseReminder = true, pauseTimeLimit = new Time("0:02:00"), playTickSound = true, shortBreakTime = new Time("0:05:00"), workTime = new Time("0:25:0");
 
-function addContextMenu() {
-	  document.addEventListener('contextmenu', function(e) {
+function addContextMenu(){
+	  document.addEventListener('contextmenu', function(e){
   		document.getElementById("breakReminderTime").innerHTML = breakReminderTime.toString("MMSS");
     	show(contextMenu);
     	e.preventDefault();
@@ -17,13 +17,23 @@ function addContextMenu() {
 	});
 }
 
+function calculateTimeStarted(){
+	dateStarted.value = currentDateTime().split(' ')[0];
+	timeStarted.value = currentDateTime().split(' ')[1];
+}
+
+function calculateTimeStopped() {
+	dateStopped.value = currentDateTime().split(' ')[0];
+	timeStopped.value = currentDateTime().split(' ')[1];
+}
+
 function calculateTimeWorked(){
-	timeWorked = new Time();
-	timeWorked.hours = (workIteration - 1) * workTime.hours;
-	timeWorked.minutes = (workIteration - 1) * workTime.minutes;
-	timeWorked.seconds = (workIteration - 1) * workTime.seconds;
-	if(/Work/.test(phase)) if(phase = "Extra Work Time") timeWorked = timeWorked.plus(workTime);
+	timeWorked.addHours((workIteration - 1) * workTime.hours);
+	timeWorked.addMinutes((workIteration - 1) * workTime.minutes);
+	timeWorked.addSeconds((workIteration - 1) * workTime.seconds);
+	if(/Work/.test(phase)) {if(phase = "Extra Work Time") timeWorked = timeWorked.plus(workTime);}
 	else timeWorked = timeWorked.plus(workTime.minus(timeLeft));
+	document.getElementById("timeWorked").value = timeWorked;
 }
 
 function displayTimer(){
@@ -34,11 +44,17 @@ function displayTimer(){
 
 function endSession(){
 	timer.stop();
+	calculateTimeStopped();
 	calculateTimeWorked();
 	if(!taskName.value) taskName.value = taskName.placeholder;
 	sessionForm.submit();
 	initializeTimer();
 	displayTimer();
+}
+
+function currentDateTime(){
+	let date = new Date;
+	return date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate() + ' ' + new Time(date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds());
 }
 
 function initializeTimer(){
@@ -84,7 +100,7 @@ function initiateNextPhase(){
 	}
 }
 
-function jumpToReminder() {
+function jumpToReminder(){
 	let jumpTime = new Time(breakReminderTime.toString());
 	jumpTime.addSeconds(1);
 	timeLeft = jumpTime;
@@ -107,7 +123,7 @@ function pause(){
 	pauseTimer.start();
 }
 
-function skipPhase() {
+function skipPhase(){
 	timeLeft = new Time("0:0:1");
 }
 
@@ -120,9 +136,7 @@ function start(){
 	show(pauseButton, stopButton);
 	pauseButton.focus();
 	if(workIteration == 1 && timeLeft.toString() == workTime.toString()){
-		let date = new Date;
-		dateStarted = date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate();
-		timeStarted = new Time(date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds());
+		calculateTimeStarted();
 	}
 }
 

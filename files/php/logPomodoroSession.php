@@ -1,5 +1,8 @@
 <?php
 
+//start session
+session_start();
+
 //create connection to database
 $sqlConnection = new mysqli("localhost", "root", "root", "my_timer") or die("Connection failed: " .$sqlConnection->connect_error);
 
@@ -19,18 +22,27 @@ $time_started = stripslashes($time_started);
 $time_stopped = stripslashes($time_stopped);
 $time_worked = stripslashes($time_worked);
 
+echo "task_name: $task_name<br>";
+echo "date_started: $date_started<br>";
+echo "date_stopped: $date_stopped<br>";
+echo "time_started: $time_started<br>";
+echo "time_stopped: $time_stopped<br>";
+echo "time_worked: $time_worked<br>";
+
 //create task
-$createTaskQuery = "insert ignore into task (user_id, name) values ($_SESSION['userID'], '$task_name');";
-$sqlConnection->query($createTaskQuery);
+$createTaskQuery = "insert ignore into task (user_id, name) values (" . $_SESSION["userID"] . ", '$task_name');";
+if ($sqlConnection->query($createTaskQuery)) echo "created task successfully<br>";
+else echo "Failed to save task: " . $sqlConnection->error;
 
 //create session
-$createSessionQuery = "insert into session (task_id, user_id, date_started, date_stopped, time_started, time_stopped, time_worked, type) values ((select id from task where name = '$task_name'), '$_SESSION['userID']', '$date_started', '$date_stopped', '$time_started', '$time_stopped', 'pomodoro');";
-$sqlConnection->query($createSessionQuery);
+$createSessionQuery = "insert into session (task_id, user_id, date_started, date_stopped, time_started, time_stopped, time_worked, type) values ((select id from task where name = '$task_name'), " . $_SESSION["userID"] . ", '$date_started', '$date_stopped', '$time_started', '$time_stopped', '$time_worked', 'pomodoro');";
+if($sqlConnection->query($createSessionQuery)) header("location: ../../pomodoro.php");
+else echo "Failed to save session: " . $sqlConnection->error;
 
 //close connection to database
 $sqlConnection->close();
 
 //redirect to timer
-header("location: ../../pomodoro.php");
+
 
 ?>
