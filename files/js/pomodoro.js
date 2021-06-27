@@ -1,5 +1,5 @@
 //declare global variables
-let alarmSound = new Audio("files/sounds/alarm-sound.wav"), breakIteration, dateStarted, dateStopped, pauseTimer = new Timer(), phase, tickSound = new Audio("files/sounds/tick-sound.wav"), timeElapsed, timeLeft, timePaused, timer = new Timer(), timeStarted, workIteration;
+let alarmSound = new Audio("files/sounds/alarm-sound.wav"), breakIteration, dateStarted, dateStopped, pauseTimer = new Timer(), phase, tickSound = new Audio("files/sounds/tick-sound.wav"), timeWorked, timeLeft, timePaused, timer = new Timer(), timeStarted, workIteration;
 
 //initialize setting variables
 let breakReminder = true, breakReminderTime = new Time("0:01:30"), longBreakTime = new Time("0:20:00"), pauseReminder = true, pauseTimeLimit = new Time("0:02:00"), playTickSound = true, shortBreakTime = new Time("0:05:00"), workTime = new Time("0:25:0");
@@ -100,7 +100,7 @@ timer.tick = function(){
 	if(/Work/.test(phase)){
 		if(playTickSound) tickSound.play();
 		if(phase == "Extra Work Time"){
-			timeElapsed.addSeconds(1);
+			timeWorked.addSeconds(1);
 			countdownLabel.innerHTML = timeLeft.toString("MMSS");
 		}
 		else{
