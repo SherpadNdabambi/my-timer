@@ -137,7 +137,7 @@ function updatePageTitle(){
 pauseTimer.tick = function(){
 	timePaused.addSeconds(1);
 	if(timePaused.toString() == pauseTimeLimit.toString()){
-		alert("Your session has been paused for " ++ pauseTimeLimit);
+		alert("Your session has been paused for " + pauseTimeLimit);
 		timePaused = new Time();
 	}
 }
