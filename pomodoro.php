@@ -70,7 +70,7 @@ function logout(){
 	
 		<div id="countdownLabel">25:00</div>
 	
-		<form id="sessionForm" action="files/logSession.php" method="post">
+		<form id="sessionForm" action="files/php/logSession.php" method="post">
 
 			<input id="taskName" name="task_name" onblur="this.placeholder = 'Unnamed Task'" onfocus="this.placeholder = ''" placeholder="Unnamed Task">
 			<input id="dateStarted" name="date_started" class="hidden">
