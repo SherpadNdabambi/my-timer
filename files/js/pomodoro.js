@@ -23,13 +23,6 @@ function displayTimer(){
 	countdownLabel.innerHTML = timeLeft.toString("MMSS");
 }
 
-function jumpToReminder() {
-	let jumpTime = new Time(breakReminderTime.toString());
-	jumpTime.addSeconds(1);
-	timeLeft = jumpTime;
-	countdownLabel.innerHTML = timeLeft.toString("MMSS");
-}
-
 function initializeTimer(){
 	breakIteration = 1;
 	workIteration = 1;
@@ -37,19 +30,47 @@ function initializeTimer(){
 	timeLeft = new Time(workTime.toString());
 }
 
-function InitiateNextPhase(){
+function initiateNextPhase(){
 	timer.stop();
 	alarmSound.play();
 	if(/Work/.test(phase)){
 		if(workIteration < 4){
 			phase = "Short Break (" + breakIteration + "/3)";
+			phaseLabel.innerHTML = phase;
 			timeLeft = new Time(shortBreakTime);
 			workIteration++;
 		}
 		else{
-			if(confirm("Your session is complete. Do you wish to continue working?"))
+			if(confirm("Your session is complete. Do you wish to continue working?")){
+				phase = "Extra Work Time";
+				phaseLabel.innerHTML = phase;
+				workIteration++;
+			}
+			else{
+				phase = "Long Break";
+				phaseLabel.innerHTML = phase;
+				timeLeft = new Time(longBreakTime);
+			}
 		}
+		timer.start();
 	}
+	else{
+		if(breakIteration < 4){
+			phase = "Work (" AND Phase["Work"] AND "/4)";
+			phaseLabel.innerHTML = phase;
+			timeLeft = new Time(workTime);
+			timer.start();
+			breakIteration++;
+		}
+		else endSession();
+	}
+}
+
+function jumpToReminder() {
+	let jumpTime = new Time(breakReminderTime.toString());
+	jumpTime.addSeconds(1);
+	timeLeft = jumpTime;
+	countdownLabel.innerHTML = timeLeft.toString("MMSS");
 }
 
 function onPageLoad(){
@@ -109,13 +130,13 @@ timer.tick = function(){
 			if(breakReminder && timeLeft.toString() == breakReminderTime.toString()){
 				if(workIteration < 4) alert("Short break will start in " + timeLeft.toString("MMSS"));
 				else alert("Long break will start in " + timeLeft.toString());
-				if(timeLeft.toString() == "00:00:00") InitiateNextPhase();
+				if(timeLeft.toString() == "00:00:00") initiateNextPhase();
 			}
 		}
 	}
 	else{
 		timeLeft.addSeconds(-1);
 		countdownLabel.innerHTML = timeLeft.toString("MMSS");
-		if(timeLeft.toString() == "00:00:00") InitiateNextPhase();
+		if(timeLeft.toString() == "00:00:00") initiateNextPhase();
 	}
 }
