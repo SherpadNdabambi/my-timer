@@ -2,7 +2,7 @@
 let alarmSound = new Audio("files/sounds/alarm-sound.wav"), breakIteration, pauseReminderCount = 0, pauseTimer = new Timer(), phase, tickSound = new Audio("files/sounds/tick-sound.wav"), timeLeft, timePaused = new Time(), timer = new Timer(), timeWorked = new Time(), workIteration;
 
 //initialize setting variables
-let breakReminder = true, breakReminderTime = new Time("0:01:30"), longBreakTime = new Time("0:20:00"), pauseReminder = true, pauseTimeLimit = new Time("0:02:00"), playTickSound = true, shortBreakTime = new Time("0:05:00"), workTime = new Time("0:25:0");
+let breakReminder = true, breakReminderTime = new Time("0:01:30"), longBreakTime = new Time("0:20:00"), pauseReminder = true, pauseTimeLimit = new Time("0:00:03"), playTickSound = true, shortBreakTime = new Time("0:05:00"), workTime = new Time("0:25:0");
 
 function addContextMenu(){
 	  document.addEventListener('contextmenu', function(e){

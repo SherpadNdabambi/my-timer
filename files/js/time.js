@@ -102,7 +102,7 @@ class Time{
 			result.seconds = -result.seconds;
 		}
 		for(let i = 0; i < multiplier; i++) result = result.plus(result);
-		return
+		return result;
 	}
 
 	toString(format = "HHMMSS"){
