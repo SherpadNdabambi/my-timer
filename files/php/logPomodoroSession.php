@@ -42,7 +42,4 @@ else echo "Failed to save session: " . $sqlConnection->error;
 //close connection to database
 $sqlConnection->close();
 
-//redirect to timer
-
-
 ?>

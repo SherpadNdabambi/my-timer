@@ -93,6 +93,18 @@ class Time{
 		this.seconds -= RHS.seconds;
 	}
 
+	times(multiplier){
+		if(multiplier == 0) return new Time();
+		let result = new Time(this.toString());
+		if(multiplier < 0){
+			result.hours = -result.hours;
+			result.minutes = -result.minutes;
+			result.seconds = -result.seconds;
+		}
+		for(let i = 0; i < multiplier; i++) result = result.plus(result);
+		return
+	}
+
 	toString(format = "HHMMSS"){
 		let timeString = '';
 		format = format.toUpperCase();
