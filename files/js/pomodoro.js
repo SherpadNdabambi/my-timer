@@ -144,6 +144,15 @@ function start(){
 }
 
 function stop(){
+	if(pauseTimer.isRunning){
+		pauseTimer.stop();
+		hide(pauseButton);
+		show(startButton);
+		startButton.focus();
+	}
+	alarmSound.play();
+	timer.stop();
+	endSession();
 }
 
 function updatePageTitle(){
