@@ -115,7 +115,7 @@ function onPageLoad(){
 
 function onPageUnload() {
 	calculateTimeWorked();
-	sessionForm.submit();
+	endSession();
 }
 
 function pause(){
