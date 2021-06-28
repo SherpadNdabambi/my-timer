@@ -36,6 +36,7 @@ function logout(){
 
 	<title>My Timer</title>
 
+	<link rel="icon" href="files/images/my-timer-icon.ico">
 	<link rel="stylesheet" type="text/css" href="files/css/styles.css">
 
 </head>
