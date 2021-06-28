@@ -97,11 +97,12 @@ class Time{
 		if(multiplier == 0) return new Time();
 		let result = new Time(this.toString());
 		if(multiplier < 0){
+			multiplier = -multiplier;
 			result.hours = -result.hours;
 			result.minutes = -result.minutes;
 			result.seconds = -result.seconds;
 		}
-		for(let i = 0; i < multiplier; i++) result = result.plus(result);
+		for(let i = 1; i < multiplier; i++) result = result.plus(this);
 		return result;
 	}
 
