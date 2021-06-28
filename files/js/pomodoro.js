@@ -113,6 +113,11 @@ function onPageLoad(){
 	addContextMenu();
 }
 
+function onPageUnload() {
+	calculateTimeWorked();
+	sessionForm.submit();
+}
+
 function pause(){
 	alarmSound.play();
 	hide(pauseButton);
