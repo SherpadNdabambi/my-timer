@@ -183,6 +183,7 @@ pauseTimer.tick = function(){
 		remind("Your session has been paused for " + pauseTimeLimit.times(pauseReminderCount + 1).inWords());
 		pauseReminderCount++;
 	}
+	startButton.focus();
 }
 
 timer.tick = function(){
@@ -208,4 +209,5 @@ timer.tick = function(){
 		if(timeLeft.toString() == "00:00:00") initiateNextPhase();
 	}
 	updatePageTitle();
+	pauseButton.focus();
 }
