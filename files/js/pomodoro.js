@@ -35,6 +35,7 @@ function calculateTimeWorked(){
 		if(phase == "Extra Work Time") timeWorked == timeWorked.plus(workTime);
 		else timeWorked = timeWorked.plus(workTime.minus(timeLeft));
 	}
+	else if(phase == "Long Break") timeWorked = timeWorked.plus(workTime);
 	document.getElementById("timeWorked").value = timeWorked;
 }
 
@@ -170,6 +171,7 @@ function updatePageTitle(){
 
 pauseTimer.tick = function(){
 	timePaused.addSeconds(1);
+	updatePageTitle();
 	if(pauseReminder && timePaused.toString() == pauseTimeLimit.times(pauseReminderCount + 1).toString()){
 		alert("Your session has been paused for " + pauseTimeLimit.times(pauseReminderCount + 1));
 		pauseReminderCount++;
@@ -198,4 +200,5 @@ timer.tick = function(){
 		countdownLabel.innerHTML = timeLeft.toString("MMSS");
 		if(timeLeft.toString() == "00:00:00") initiateNextPhase();
 	}
+	updatePageTitle();
 }
