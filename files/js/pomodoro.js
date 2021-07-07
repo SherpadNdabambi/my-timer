@@ -31,8 +31,10 @@ function calculateTimeWorked(){
 	timeWorked.addHours((workIteration - 1) * workTime.hours);
 	timeWorked.addMinutes((workIteration - 1) * workTime.minutes);
 	timeWorked.addSeconds((workIteration - 1) * workTime.seconds);
-	if(/Work/.test(phase)) {if(phase = "Extra Work Time") timeWorked = timeWorked.plus(workTime);}
-	else timeWorked = timeWorked.plus(workTime.minus(timeLeft));
+	if(/Work/.test(phase)){
+		if(phase == "Extra Work Time") timeWorked == timeWorked.plus(workTime);
+		else timeWorked = timeWorked.plus(workTime.minus(timeLeft));
+	}
 	document.getElementById("timeWorked").value = timeWorked;
 }
 
