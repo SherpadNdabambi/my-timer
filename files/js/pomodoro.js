@@ -131,6 +131,13 @@ function pause(){
 	pauseTimer.start();
 }
 
+function remind(message){
+	let speech = new SpeechSynthesisUtterance(message);
+	speech.rate = 0.9;
+	speechSynthesis.speak(speech);
+	alert(message);
+}
+
 function skipPhase(){
 	timeLeft = new Time("0:0:1");
 }
@@ -173,7 +180,7 @@ pauseTimer.tick = function(){
 	timePaused.addSeconds(1);
 	updatePageTitle();
 	if(pauseReminder && timePaused.toString() == pauseTimeLimit.times(pauseReminderCount + 1).toString()){
-		alert("Your session has been paused for " + pauseTimeLimit.times(pauseReminderCount + 1));
+		remind("Your session has been paused for " + pauseTimeLimit.times(pauseReminderCount + 1).inWords());
 		pauseReminderCount++;
 	}
 }
@@ -189,8 +196,8 @@ timer.tick = function(){
 			timeLeft.addSeconds(-1);
 			countdownLabel.innerHTML = timeLeft.toString("MMSS");
 			if(breakReminder && timeLeft.toString() == breakReminderTime.toString()){
-				if(workIteration < 4) alert("Short break will start in " + timeLeft.toString("MMSS"));
-				else alert("Long break will start in " + timeLeft.toString());
+				if(workIteration < 4) remind("Short break will start in " + timeLeft.inWords());
+				else remind("Long break will start in " + timeLeft.inWords());
 			}
 			if(timeLeft.toString() == "00:00:00") initiateNextPhase();
 		}
