@@ -159,15 +159,17 @@ function start(){
 }
 
 function stop(){
-	if(pauseTimer.isRunning){
-		pauseTimer.stop();
-		hide(pauseButton);
-		show(startButton);
-		startButton.focus();
+	if(confirm("Are you sure you want to end this session?")){
+		if(pauseTimer.isRunning){
+			pauseTimer.stop();
+			hide(pauseButton);
+			show(startButton);
+			startButton.focus();
+		}
+		alarmSound.play();
+		timer.stop();
+		endSession();
 	}
-	alarmSound.play();
-	timer.stop();
-	endSession();
 }
 
 function updatePageTitle(){
