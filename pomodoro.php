@@ -61,9 +61,7 @@ function logout(){
 		
 		<button id="accountButton" onclick="hide(accountPanel)"> <img id="accountIcon" src="files/images/icons8-user-24.png"> </button>
 
-		<br><? php echo "$username"; ?>
-
-		<hr>
+		<br><?php echo "$username"; ?><hr>
 
 		<form method="post">
 			<input type="submit" name="logoutButton" value="Logout">

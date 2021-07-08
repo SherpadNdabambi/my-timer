@@ -29,8 +29,8 @@ button{
 }
 
 .context-menu{
-	background-color: darkcyan;
-	color: ghostwhite;
+	background-color: teal;
+	color: white;
 	margin-right: 0.5%;
 	padding-bottom: 1%;
 	padding-top: 1%;
@@ -45,7 +45,7 @@ button{
 }
 
 .context-menu-item:hover{
-	background-color: wheat;
+	background-color: darkcyan;
 	cursor: pointer;
 }
 
