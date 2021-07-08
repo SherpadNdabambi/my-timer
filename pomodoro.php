@@ -10,9 +10,14 @@ $sqlConnection = new mysqli("localhost", "root", "root", "my_timer") or die("Con
 
 //get username from database
 $user_id = $_SESSION["userID"];
-$select_username_query = "Select username from user where id = '$user_id'";
+$select_username_query = "Select username from user where id = $user_id";
 $result = $sqlConnection->query($select_username_query);
 $username = $result->fetch_assoc()["username"];
+
+//get task list from database
+$select_task_query = "Select name from task where user_id = $user_id";
+$result = $sqlConnection->query($select_task_query);
+$tasklist = $result->fetch_all();
 
 //close connection to database
 $sqlConnection->close();
@@ -56,7 +61,7 @@ function logout(){
 		
 		<button id="accountButton" onclick="hide(accountPanel)"> <img id="accountIcon" src="files/images/icons8-user-24.png"> </button>
 
-		<br><?php echo "$username"; ?>
+		<br><? php echo "$username"; ?>
 
 		<hr>
 
@@ -74,7 +79,10 @@ function logout(){
 
 		<form id="sessionForm" action="files/php/logPomodoroSession.php" method="post">
 
-			<input id="taskName" name="task_name" onblur="this.placeholder = 'Unnamed Task'" onfocus="this.placeholder = ''" placeholder="Unnamed Task">
+			<input id="taskName" name="task_name" autocomplete="off" list="taskList" onblur="this.placeholder = 'Unnamed task'" onfocus="this.placeholder = ''" placeholder="Unnamed task">
+			<datalist id="taskList">
+				<?php foreach($tasklist as $task) echo "<option value='$task[0]'></option>" ?>
+			</datalist>
 			<input id="dateStarted" name="date_started" class="hidden">
 			<input id="dateStopped" name="date_stopped" class="hidden">
 			<input id="timeStarted" name="time_started" class="hidden">
