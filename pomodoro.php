@@ -15,7 +15,7 @@ $result = $sqlConnection->query($select_username_query);
 $username = $result->fetch_assoc()["username"];
 
 //get task list from database
-$select_task_query = "Select name from task where user_id = $user_id";
+$select_task_query = "Select name, max(date_started) from session, task where task.user_id = $user_id and task_id = task.id group by name order by max(date_started);";
 $result = $sqlConnection->query($select_task_query);
 $tasklist = $result->fetch_all();
 
