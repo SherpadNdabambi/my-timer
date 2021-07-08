@@ -81,7 +81,7 @@ function logout(){
 
 			<input id="taskName" name="task_name" autocomplete="off" list="taskList" onblur="this.placeholder = 'Unnamed task'" onfocus="this.placeholder = ''" placeholder="Unnamed task">
 			<datalist id="taskList">
-				<?php foreach($tasklist as $task) echo "<option value='$task[0]'></option>" ?>
+				<?php foreach(array_reverse($tasklist) as $task) echo "<option value='$task[0]'></option>" ?>
 			</datalist>
 			<input id="dateStarted" name="date_started" class="hidden">
 			<input id="dateStopped" name="date_stopped" class="hidden">
