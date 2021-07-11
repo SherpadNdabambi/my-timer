@@ -90,7 +90,7 @@ function logout(){
 		</form>
 
 		<button id="startButton" onclick="start()"> <img id="startIcon" src="files/images/play.png" class="control"> </button>
-		<button id="pauseButton" class="hidden"  onclick="pause()"> <img id="pauseIcon" src="files/images/pause.png" class="control"> </button>
+		<button id="pauseButton" class="hidden" onclick="pause()"> <img id="pauseIcon" src="files/images/pause.png" class="control"> </button>
 		<button id="stopButton" class="hidden" onclick="stop()"> <img id="stopIcon" src="files/images/stop.png" class="control"> </button>
 
 	</div>
