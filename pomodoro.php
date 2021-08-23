@@ -74,17 +74,6 @@ function logout(){
 
 	</div>
 
-	<!--to pass setting variables to javascript-->
-	<input type="checkbox" id="breakReminder" name="break_reminder" class="hidden" checked="<?php echo $settings['break_reminder']; ?>">
-	<input id="breakReminderTime" name="break_reminder_time" class="hidden" value="<?php echo $settings['break_reminder_time']; ?>">
-	<input id="longBreakTime" name="long_break_time" class="hidden" value="<?php echo $settings['long_break_time']; ?>">
-	<input type="checkbox" id="pauseReminder" name="pause_reminder" class="hidden" checked="<?php echo $settings['pause_reminder']; ?>">
-	<input id="pauseTimeLimit" name="pause_time_limit" class="hidden" value="<?php echo $settings['pause_time_limit']; ?>">
-	<input type="checkbox" id="playTickSound" name="play_tick_sound" class="hidden" checked="<?php echo $settings['play_tick_sound']; ?>">
-	<input id="shortBreakTime" name="short_break_time" class="hidden" value="<?php echo $settings['short_break_time']; ?>">
-	<input id="timerMode" name="timer_mode" class="hidden" value="<?php echo $settings['timer_mode']; ?>">
-	<input id="workTime" name="work_time" class="hidden" value="<?php echo $settings['work_time']; ?>">
-
 	<div class="centered">
 
 		<div id="phaseLabel">Work (1/4)</div>
@@ -108,6 +97,19 @@ function logout(){
 		<button id="startButton" onclick="start()"> <img id="startIcon" src="files/images/play.png" class="control"> </button>
 		<button id="pauseButton" class="hidden" onclick="pause()"> <img id="pauseIcon" src="files/images/pause.png" class="control"> </button>
 		<button id="stopButton" class="hidden" onclick="stop()"> <img id="stopIcon" src="files/images/stop.png" class="control"> </button>
+
+		<!--to pass setting variables to javascript-->
+		<input type="checkbox" id="breakReminder" name="break_reminder" class="hidden" checked="<?php echo $settings['break_reminder']; ?>">
+		<input id="breakReminderTime" name="break_reminder_time" class="hidden" value="<?php echo $settings['break_reminder_time']; ?>">
+		<input id="longBreakTime" name="long_break_time" class="hidden" value="<?php echo $settings['long_break_time']; ?>">
+		<input type="checkbox" id="pauseReminder" name="pause_reminder" class="hidden" checked="<?php echo $settings['pause_reminder']; ?>">
+		<input id="pauseTimeLimit" name="pause_time_limit" class="hidden" value="<?php echo $settings['pause_time_limit']; ?>">
+		<input type="checkbox" id="playTickSound" name="play_tick_sound" class="hidden" checked="<?php echo $settings['play_tick_sound']; ?>">
+		<input id="shortBreakTime" name="short_break_time" class="hidden" value="<?php echo $settings['short_break_time']; ?>">
+		<input id="timerMode" name="timer_mode" class="hidden" value="<?php echo $settings['timer_mode']; ?>">
+		<input id="workTime" name="work_time" class="hidden" value="<?php echo $settings['work_time']; ?>">
+		<br><br><button id="volumeButton" onclick="volumeButtonClicked()"> <img id="soundIcon" width="18px"> </button>
+		<input type="range" id="volumeSlider" min="0" max="100" value="100">
 
 	</div>
 
