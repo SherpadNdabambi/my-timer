@@ -14,6 +14,11 @@ $select_username_query = "Select username from user where id = $user_id";
 $result = $sqlConnection->query($select_username_query);
 $username = $result->fetch_assoc()["username"];
 
+//get user settings from database
+$select_settings_query = "Select * from settings where user_id = $user_id;";
+$result = $sqlConnection->query($select_settings_query);
+$settings = $result->fetch_assoc();
+
 //get task list from database
 $select_task_query = "Select name, max(date_started) from session, task where task.user_id = $user_id and task_id = task.id group by name order by max(date_started);";
 $result = $sqlConnection->query($select_task_query);
@@ -50,7 +55,7 @@ function logout(){
 
 	<div id="contextMenu" class="context-menu hidden">
 
-		<div class="context-menu-item" onclick="jumpToReminder()">Jump to <span id="breakReminderTime"></span></div>
+		<div class="context-menu-item" onclick="jumpToReminder()">Jump to <span id="breakReminderTimeSpan"></span></div>
 		<div class="context-menu-item" onclick="skipPhase()">Next phase</div>
 
 	</div>
@@ -68,6 +73,17 @@ function logout(){
 		</form>
 
 	</div>
+
+	<!--to pass setting variables to javascript-->
+	<input type="checkbox" id="breakReminder" name="break_reminder" class="hidden" checked="<?php echo $settings['break_reminder']; ?>">
+	<input id="breakReminderTime" name="break_reminder_time" class="hidden" value="<?php echo $settings['break_reminder_time']; ?>">
+	<input id="longBreakTime" name="long_break_time" class="hidden" value="<?php echo $settings['long_break_time']; ?>">
+	<input type="checkbox" id="pauseReminder" name="pause_reminder" class="hidden" checked="<?php echo $settings['pause_reminder']; ?>">
+	<input id="pauseTimeLimit" name="pause_time_limit" class="hidden" value="<?php echo $settings['pause_time_limit']; ?>">
+	<input type="checkbox" id="playTickSound" name="play_tick_sound" class="hidden" checked="<?php echo $settings['play_tick_sound']; ?>">
+	<input id="shortBreakTime" name="short_break_time" class="hidden" value="<?php echo $settings['short_break_time']; ?>">
+	<input id="timerMode" name="timer_mode" class="hidden" value="<?php echo $settings['timer_mode']; ?>">
+	<input id="workTime" name="work_time" class="hidden" value="<?php echo $settings['work_time']; ?>">
 
 	<div class="centered">
 
