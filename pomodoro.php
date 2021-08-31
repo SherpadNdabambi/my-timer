@@ -108,8 +108,8 @@ function logout(){
 		<input id="shortBreakTime" name="short_break_time" class="hidden" value="<?php echo $settings['short_break_time']; ?>">
 		<input id="timerMode" name="timer_mode" class="hidden" value="<?php echo $settings['timer_mode']; ?>">
 		<input id="workTime" name="work_time" class="hidden" value="<?php echo $settings['work_time']; ?>">
-		<br><br><button id="volumeButton" onclick="volumeButtonClicked()"> <img id="soundIcon" width="18px"> </button>
-		<input type="range" id="volumeSlider" min="0" max="100" value="100">
+		<br><br><button id="muteButton" onclick="muteButtonClicked()"> <img id="soundIcon" width="18px"> </button>
+		<input type="range" id="volumeSlider" min="0" max="100" onchange="setVolume()" value="<?php echo $settings['volume'] ?>">
 
 	</div>
 

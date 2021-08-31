@@ -60,11 +60,6 @@ function endSession(){
 	displayTimer();
 }
 
-function setSoundIcon(){
-	if(volume == 0) soundIcon.src = "files/images/icons8-mute-50.png";
-	else soundIcon.src = "files/images/icons8-audio-50.png";
-}
-
 function initializeTimer(){
 	breakIteration = 1;
 	workIteration = 1;
@@ -115,6 +110,19 @@ function jumpToReminder(){
 	countdownLabel.innerHTML = timeLeft.toString("MMSS");
 }
 
+function muteButtonClicked(){
+	if(volume == 0){
+		volume = volumeSlider.value;
+		volumeSlider.disabled = false;
+	}
+	else{
+		volume = 0;
+		volumeSlider.disabled = true;
+	}
+	setSoundIcon();
+	setVolume();
+}
+
 function onPageLoad(){
 	initializeTimer();
 	displayTimer();
@@ -141,6 +149,16 @@ function remind(message){
 	speech.rate = 0.9;
 	speechSynthesis.speak(speech);
 	alert(message);
+}
+
+function setSoundIcon(){
+	if(volume == 0) soundIcon.src = "files/images/icons8-mute-50.png";
+	else soundIcon.src = "files/images/icons8-audio-50.png";
+}
+
+function setVolume(){
+	alarmSound.volume = volume / 100;
+	tickSound.volume = volume / 100;
 }
 
 function skipPhase(){
@@ -183,18 +201,6 @@ function updatePageTitle(){
 	document.title = "[" + document.getElementById("countdownLabel").innerHTML + "] " + currentTask + " - My Timer";
 }
 
-function volumeButtonClicked(){
-	if(volume == 0){
-		volume = volumeSlider.value;
-		volumeSlider.disabled = false;
-	}
-	else{
-		volume = 0;
-		volumeSlider.disabled = true;
-	}
-	setSoundIcon();
-}
-
 pauseTimer.tick = function(){
 	timePaused.addSeconds(1);
 	updatePageTitle();
@@ -232,3 +238,4 @@ timer.tick = function(){
 }
 
 setSoundIcon();
+setVolume();
