@@ -2,7 +2,7 @@
 let alarmSound = new Audio("files/sounds/alarm-sound.wav"), breakIteration, pauseReminderCount = 0, pauseTimer = new Timer(), phase, tickSound = new Audio("files/sounds/tick-sound.wav"), timeLeft, timePaused = new Time(), timer = new Timer(), timeWorked = new Time(), workIteration;
 
 //get setting variables
-let breakReminder = document.getElementById("breakReminder").checked, breakReminderTime = new Time(document.getElementById("breakReminderTime").value), longBreakTime = new Time(document.getElementById("longBreakTime").value), pauseReminder = document.getElementById("pauseReminder").checked, pauseTimeLimit = new Time(document.getElementById("pauseTimeLimit").value), playTickSound = document.getElementById("playTickSound").checked, shortBreakTime = new Time(document.getElementById("shortBreakTime").value), volume = volumeSlider.value, workTime = new Time(document.getElementById("workTime").value);
+let breakReminder = document.getElementById("breakReminder").checked, breakReminderTime = new Time(document.getElementById("breakReminderTime").value), longBreakTime = new Time(document.getElementById("longBreakTime").value), pauseReminder = document.getElementById("pauseReminder").checked, pauseTimeLimit = new Time(document.getElementById("pauseTimeLimit").value), playTickSound = document.getElementById("playTickSound").checked, shortBreakTime = new Time(document.getElementById("shortBreakTime").value), volume = volumeSlider.value / 100, workTime = new Time(document.getElementById("workTime").value);
 
 function addContextMenu(){
 	  document.addEventListener('contextmenu', function(e){
@@ -157,8 +157,8 @@ function setSoundIcon(){
 }
 
 function setVolume(){
-	alarmSound.volume = volume / 100;
-	tickSound.volume = volume / 100;
+	alarmSound.volume = volume;
+	tickSound.volume = volume;
 }
 
 function skipPhase(){
@@ -199,6 +199,11 @@ function updatePageTitle(){
 	if(document.getElementById("taskName").value) currentTask = document.getElementById("taskName").value;
 	else currentTask = document.getElementById("taskName").placeholder;
 	document.title = "[" + document.getElementById("countdownLabel").innerHTML + "] " + currentTask + " - My Timer";
+}
+
+function volumeSliderChanged(){
+	volume = volumeSlider.value / 100;
+	setVolume();
 }
 
 pauseTimer.tick = function(){
