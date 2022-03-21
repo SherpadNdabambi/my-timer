@@ -16,8 +16,10 @@ if($_SESSION["userID"]){
 	$sqlConnection->close();
 
 	//redirect to user's last used timer mode
-	if($timer_mode = "pomodoro") header("location: pomodoro.php");
-	else header("location: stopwatch.php");
+	if($timer_mode == "countdown") header("location: countdown.php");
+	else
+		if($timer_mode == "pomodoro") header("location: pomodoro.php")
+		else header("location: stopwatch.php");
 }
 else header("location: login.php");
 
