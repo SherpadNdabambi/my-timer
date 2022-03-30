@@ -191,6 +191,7 @@ function start(){
 	pauseButton.focus();
 	if(workIteration == 1 && timeLeft.toString() == workTime.toString()){
 		calculateTimeStarted();
+		saveSession();
 	}
 }
 
@@ -232,6 +233,7 @@ pauseTimer.tick = function(){
 		remind("Your session has been paused for " + pauseTimeLimit.times(pauseReminderCount + 1).inWords());
 		pauseReminderCount++;
 	}
+	updateSession();
 	if(document.activeElement != "[object HTMLInputElement]") startButton.focus();
 }
 
