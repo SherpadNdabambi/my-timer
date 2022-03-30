@@ -91,6 +91,7 @@ function logout(){
 			<input id="timeStarted" name="time_started" class="hidden">
 			<input id="timeStopped" name="time_stopped" class="hidden">
 			<input id="timeWorked" name="time_worked" class="hidden">
+			<button type="submit" id="submitSessionForm" class="hidden"></button>
 
 		</form>
 
