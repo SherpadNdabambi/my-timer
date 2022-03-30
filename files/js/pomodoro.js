@@ -4,6 +4,14 @@ let alarmSound = new Audio("files/sounds/alarm-sound.wav"), breakIteration, extr
 //get setting variables
 let breakReminder = document.getElementById("breakReminder").checked, breakReminderTime = new Time(document.getElementById("breakReminderTime").value), longBreakTime = new Time(document.getElementById("longBreakTime").value), pauseReminder = document.getElementById("pauseReminder").checked, pauseTimeLimit = new Time(document.getElementById("pauseTimeLimit").value), playTickSound = document.getElementById("playTickSound").checked, shortBreakTime = new Time(document.getElementById("shortBreakTime").value), volume = volumeSlider.value / 100, workTime = new Time(document.getElementById("workTime").value);
 
+//To submit form without reloading page
+$(document).ready(function(){
+	$("#sessionForm").submit(function(){
+		$.post($(this).attr("action"), $(this).serializeArray());
+		return false;
+	});
+});
+
 function addContextMenu(){
 	  document.addEventListener('contextmenu', function(e){
   		breakReminderTimeSpan.innerHTML = breakReminderTime.toString("MMSS");
@@ -55,7 +63,7 @@ function endSession(){
 	calculateTimeStopped();
 	calculateTimeWorked();
 	if(!taskName.value) taskName.value = taskName.placeholder;
-	sessionForm.submit();
+	submitSessionForm.click();
 	initializeTimer();
 	displayTimer();
 }
