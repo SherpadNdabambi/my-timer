@@ -171,6 +171,7 @@ function setSoundIcon(){
 function setVolume(){
 	alarmSound.volume = volume;
 	tickSound.volume = volume;
+	$.post("files/php/updateVolume.php", {volume: $("#volumeSlider").val()});
 }
 
 function skipPhase(){
