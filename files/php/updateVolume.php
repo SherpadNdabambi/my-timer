@@ -7,7 +7,7 @@ session_start();
 $sqlConnection = new mysqli("localhost", "root", "root", "my_timer") or die("Connection failed: " .$sqlConnection->connect_error);
 
 //get volume from slider
-$volume = $_POST["volume_slider"];
+$volume = $_POST["volume"];
 
 //update settings
 $query = "update settings set volume = '$volume' where user_id = " .$_SESSION["userID"] .";";
