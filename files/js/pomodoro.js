@@ -60,10 +60,7 @@ function displayTimer(){
 
 function endSession(){
 	timer.stop();
-	calculateTimeStopped();
-	calculateTimeWorked();
-	if(!taskName.value) taskName.value = taskName.placeholder;
-	submitSessionForm.click();
+	saveSession();
 	initializeTimer();
 	displayTimer();
 }
@@ -159,6 +156,13 @@ function remind(message){
 	alert(message);
 }
 
+function saveSession(){
+	calculateTimeStopped();
+	calculateTimeWorked();
+	if(!taskName.value) taskName.value = taskName.placeholder;
+	submitSessionForm.click();
+}
+
 function setSoundIcon(){
 	if(volume == 0) soundIcon.src = "files/images/icons8-mute-50.png";
 	else soundIcon.src = "files/images/icons8-audio-50.png";
@@ -193,10 +197,10 @@ function stop(){
 	if(confirm("Are you sure you want to end this session?")){
 		if(pauseTimer.isRunning){
 			pauseTimer.stop();
-			hide(pauseButton);
-			show(startButton);
-			startButton.focus();
 		}
+		hide(pauseButton);
+		show(startButton);
+		startButton.focus();
 		alarmSound.play();
 		timer.stop();
 		endSession();
@@ -207,6 +211,12 @@ function updatePageTitle(){
 	if(document.getElementById("taskName").value) currentTask = document.getElementById("taskName").value;
 	else currentTask = document.getElementById("taskName").placeholder;
 	document.title = "[" + document.getElementById("countdownLabel").innerHTML + "] " + currentTask + " - My Timer";
+}
+
+function updateSession(){
+	calculateTimeStopped();
+	calculateTimeWorked();
+	$.post("files/php/updateSession.php", $("#sessionForm").serializeArray());
 }
 
 function volumeSliderChanged(){
@@ -248,6 +258,7 @@ timer.tick = function(){
 		if(timeLeft.toString() == "00:00:00") initiateNextPhase();
 	}
 	updatePageTitle();
+	updateSession();
 	if(document.activeElement != "[object HTMLInputElement]") pauseButton.focus();
 }
 
