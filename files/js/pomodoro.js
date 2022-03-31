@@ -35,18 +35,6 @@ function calculateTimeStopped() {
 	timeStopped.value = currentDateTime().split(' ')[1];
 }
 
-function calculateTimeWorked(){
-	timeWorked.addHours((workIteration - 1) * workTime.hours);
-	timeWorked.addMinutes((workIteration - 1) * workTime.minutes);
-	timeWorked.addSeconds((workIteration - 1) * workTime.seconds);
-	if(/Work/.test(phase)){
-		if(phase == "Extra Work Time") timeWorked == timeWorked.plus(workTime);
-		else timeWorked = timeWorked.plus(workTime.minus(timeLeft));
-	}
-	else if(phase == "Long Break") timeWorked = timeWorked.plus(workTime);
-	document.getElementById("timeWorked").value = timeWorked;
-}
-
 function currentDateTime(){
 	let date = new Date;
 	return date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate() + ' ' + new Time(date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds());
@@ -134,11 +122,6 @@ function onPageLoad(){
 	addContextMenu();
 }
 
-function onPageUnload() {
-	calculateTimeWorked();
-	endSession();
-}
-
 function pause(){
 	alarmSound.play();
 	hide(pauseButton);
@@ -158,7 +141,7 @@ function remind(message){
 
 function saveSession(){
 	calculateTimeStopped();
-	calculateTimeWorked();
+	document.getElementById("timeWorked").value = timeWorked;
 	if(!taskName.value) taskName.value = taskName.placeholder;
 	submitSessionForm.click();
 }
@@ -217,7 +200,7 @@ function updatePageTitle(){
 
 function updateSession(){
 	calculateTimeStopped();
-	calculateTimeWorked();
+	document.getElementById("timeWorked").value = timeWorked;
 	$.post("files/php/updateSession.php", $("#sessionForm").serializeArray());
 }
 
@@ -239,9 +222,9 @@ pauseTimer.tick = function(){
 
 timer.tick = function(){
 	if(/Work/.test(phase)){
+		timeWorked.addSeconds(1);
 		if(playTickSound) tickSound.play();
 		if(phase == "Extra Work Time"){
-			timeWorked.addSeconds(1);
 			extraTimeWorked.addSeconds(1);
 			countdownLabel.innerHTML = extraTimeWorked.toString("MMSS");
 		}
