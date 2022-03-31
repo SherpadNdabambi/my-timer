@@ -43,6 +43,6 @@ if($time_worked != "00:00:00"){
 	//close connection to database
 	$sqlConnection->close();
 }
-header("location: ../../pomodoro.php");
+//header("location: ../../pomodoro.php");
 
 ?>

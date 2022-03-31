@@ -4,6 +4,14 @@ let alarmSound = new Audio("files/sounds/alarm-sound.wav"), breakIteration, extr
 //get setting variables
 let breakReminder = document.getElementById("breakReminder").checked, breakReminderTime = new Time(document.getElementById("breakReminderTime").value), longBreakTime = new Time(document.getElementById("longBreakTime").value), pauseReminder = document.getElementById("pauseReminder").checked, pauseTimeLimit = new Time(document.getElementById("pauseTimeLimit").value), playTickSound = document.getElementById("playTickSound").checked, shortBreakTime = new Time(document.getElementById("shortBreakTime").value), volume = volumeSlider.value / 100, workTime = new Time(document.getElementById("workTime").value);
 
+//To submit form without reloading page
+$(document).ready(function(){
+	$("#sessionForm").submit(function(){
+		$.post($(this).attr("action"), $(this).serializeArray());
+		return false;
+	});
+});
+
 function addContextMenu(){
 	  document.addEventListener('contextmenu', function(e){
   		breakReminderTimeSpan.innerHTML = breakReminderTime.toString("MMSS");
@@ -27,18 +35,6 @@ function calculateTimeStopped() {
 	timeStopped.value = currentDateTime().split(' ')[1];
 }
 
-function calculateTimeWorked(){
-	timeWorked.addHours((workIteration - 1) * workTime.hours);
-	timeWorked.addMinutes((workIteration - 1) * workTime.minutes);
-	timeWorked.addSeconds((workIteration - 1) * workTime.seconds);
-	if(/Work/.test(phase)){
-		if(phase == "Extra Work Time") timeWorked == timeWorked.plus(workTime);
-		else timeWorked = timeWorked.plus(workTime.minus(timeLeft));
-	}
-	else if(phase == "Long Break") timeWorked = timeWorked.plus(workTime);
-	document.getElementById("timeWorked").value = timeWorked;
-}
-
 function currentDateTime(){
 	let date = new Date;
 	return date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate() + ' ' + new Time(date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds());
@@ -52,10 +48,7 @@ function displayTimer(){
 
 function endSession(){
 	timer.stop();
-	calculateTimeStopped();
-	calculateTimeWorked();
-	if(!taskName.value) taskName.value = taskName.placeholder;
-	sessionForm.submit();
+	saveSession();
 	initializeTimer();
 	displayTimer();
 }
@@ -129,11 +122,6 @@ function onPageLoad(){
 	addContextMenu();
 }
 
-function onPageUnload() {
-	calculateTimeWorked();
-	endSession();
-}
-
 function pause(){
 	alarmSound.play();
 	hide(pauseButton);
@@ -151,6 +139,13 @@ function remind(message){
 	alert(message);
 }
 
+function saveSession(){
+	calculateTimeStopped();
+	document.getElementById("timeWorked").value = timeWorked;
+	if(!taskName.value) taskName.value = taskName.placeholder;
+	submitSessionForm.click();
+}
+
 function setSoundIcon(){
 	if(volume == 0) soundIcon.src = "files/images/icons8-mute-50.png";
 	else soundIcon.src = "files/images/icons8-audio-50.png";
@@ -159,6 +154,7 @@ function setSoundIcon(){
 function setVolume(){
 	alarmSound.volume = volume;
 	tickSound.volume = volume;
+	$.post("files/php/updateVolume.php", {volume: $("#volumeSlider").val()});
 }
 
 function skipPhase(){
@@ -178,6 +174,7 @@ function start(){
 	pauseButton.focus();
 	if(workIteration == 1 && timeLeft.toString() == workTime.toString()){
 		calculateTimeStarted();
+		saveSession();
 	}
 }
 
@@ -185,10 +182,10 @@ function stop(){
 	if(confirm("Are you sure you want to end this session?")){
 		if(pauseTimer.isRunning){
 			pauseTimer.stop();
-			hide(pauseButton);
-			show(startButton);
-			startButton.focus();
 		}
+		hide(pauseButton);
+		show(startButton);
+		startButton.focus();
 		alarmSound.play();
 		timer.stop();
 		endSession();
@@ -198,7 +195,13 @@ function stop(){
 function updatePageTitle(){
 	if(document.getElementById("taskName").value) currentTask = document.getElementById("taskName").value;
 	else currentTask = document.getElementById("taskName").placeholder;
-	document.title = "[" + document.getElementById("countdownLabel").innerHTML + "] " + currentTask + " - My Timer";
+	document.title = "[" + timeLeft.toString("MMSS") + "] " + currentTask + " - My Timer";
+}
+
+function updateSession(){
+	calculateTimeStopped();
+	document.getElementById("timeWorked").value = timeWorked;
+	$.post("files/php/updateSession.php", $("#sessionForm").serializeArray());
 }
 
 function volumeSliderChanged(){
@@ -213,14 +216,15 @@ pauseTimer.tick = function(){
 		remind("Your session has been paused for " + pauseTimeLimit.times(pauseReminderCount + 1).inWords());
 		pauseReminderCount++;
 	}
+	updateSession();
 	if(document.activeElement != "[object HTMLInputElement]") startButton.focus();
 }
 
 timer.tick = function(){
 	if(/Work/.test(phase)){
+		timeWorked.addSeconds(1);
 		if(playTickSound) tickSound.play();
 		if(phase == "Extra Work Time"){
-			timeWorked.addSeconds(1);
 			extraTimeWorked.addSeconds(1);
 			countdownLabel.innerHTML = extraTimeWorked.toString("MMSS");
 		}
@@ -240,6 +244,7 @@ timer.tick = function(){
 		if(timeLeft.toString() == "00:00:00") initiateNextPhase();
 	}
 	updatePageTitle();
+	updateSession();
 	if(document.activeElement != "[object HTMLInputElement]") pauseButton.focus();
 }
 
