@@ -115,6 +115,8 @@ function logout(){
 	</div>
 
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+	<script type="text/javascript">window.jQuery || document.write("<script type='text/javascript' src='files/js/vendor/jquery-3.6.0.min.js'><\/script>")</script>
 	<script type="text/javascript" src="files/js/scripts.js"></script>
 	<script type="text/javascript" src="files/js/time.js"></script>
 	<script type="text/javascript" src="files/js/timer.js"></script>
