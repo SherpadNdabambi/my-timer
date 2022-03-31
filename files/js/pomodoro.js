@@ -195,7 +195,7 @@ function stop(){
 function updatePageTitle(){
 	if(document.getElementById("taskName").value) currentTask = document.getElementById("taskName").value;
 	else currentTask = document.getElementById("taskName").placeholder;
-	document.title = "[" + document.getElementById("countdownLabel").innerHTML + "] " + currentTask + " - My Timer";
+	document.title = "[" + timeLeft.toString("MMSS") + "] " + currentTask + " - My Timer";
 }
 
 function updateSession(){
