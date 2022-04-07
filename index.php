@@ -1,3 +1,5 @@
+<!--My Timer 2.7.0-->
+
 <?php
 
 session_start();
