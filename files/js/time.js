@@ -51,8 +51,8 @@ class Time{
 
 	addSeconds(seconds){
 		this.seconds += seconds;
-		if(this.seconds >= 59){
-			this.minutes++;
+		if(this.seconds > 59){
+			this.addMinutes(1);
 			this.seconds -= 60;
 		}
 		if(this.seconds < 0){//in case user added negative seconds
