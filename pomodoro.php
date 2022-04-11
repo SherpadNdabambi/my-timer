@@ -82,10 +82,11 @@ function logout(){
 
 		<form id="sessionForm" action="files/php/logPomodoroSession.php" method="post">
 
-			<input id="taskName" name="task_name" autocomplete="off" list="taskList" onblur="this.placeholder = 'Unnamed task'" onfocus="this.placeholder = ''" placeholder="Unnamed task">
+			<input id="taskName" autocomplete="off" list="taskList" onblur="this.placeholder = 'Unnamed task';" onchange="updateTaskName();" onfocus="this.placeholder = '';" placeholder="Unnamed task">
 			<datalist id="taskList">
 				<?php foreach(array_reverse($tasklist) as $task) echo "<option value='$task[0]'></option>" ?>
 			</datalist>
+            <input id="task_name" name="task_name" value="Unnamed task">
 			<input id="dateStarted" name="date_started" class="hidden">
 			<input id="dateStopped" name="date_stopped" class="hidden">
 			<input id="timeStarted" name="time_started" class="hidden">

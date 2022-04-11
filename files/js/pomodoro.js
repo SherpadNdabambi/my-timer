@@ -209,6 +209,10 @@ function updateSession(){
 	$.post("files/php/updateSession.php", $("#sessionForm").serializeArray());
 }
 
+function updateTaskName(){
+	document.getElementById("task_name").value = document.getElementById("taskName").value;
+}
+
 function volumeSliderChanged(){
 	volume = volumeSlider.value / 100;
 	setVolume();
