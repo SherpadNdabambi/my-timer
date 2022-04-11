@@ -40,6 +40,13 @@ function currentDateTime(){
 	return date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate() + ' ' + new Time(date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds());
 }
 
+function displayButtons(){
+	hide(pauseButton);
+	hide(stopButton);
+	show(startButton);
+	startButton.focus();
+}
+
 function displayTimer(){
 	phaseLabel.innerHTML = phase;
 	updatePageTitle();
@@ -51,6 +58,7 @@ function endSession(){
 	saveSession();
 	initializeTimer();
 	displayTimer();
+	displayButtons();
 }
 
 function initializeTimer(){
@@ -183,9 +191,6 @@ function stop(){
 		if(pauseTimer.isRunning){
 			pauseTimer.stop();
 		}
-		hide(pauseButton);
-		show(startButton);
-		startButton.focus();
 		alarmSound.play();
 		timer.stop();
 		endSession();
