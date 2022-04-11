@@ -86,7 +86,7 @@ function logout(){
 			<datalist id="taskList">
 				<?php foreach(array_reverse($tasklist) as $task) echo "<option value='$task[0]'></option>" ?>
 			</datalist>
-            <input id="task_name" name="task_name" value="Unnamed task">
+            <input id="task_name" name="task_name" class="hidden" value="Unnamed task">
 			<input id="dateStarted" name="date_started" class="hidden">
 			<input id="dateStopped" name="date_stopped" class="hidden">
 			<input id="timeStarted" name="time_started" class="hidden">

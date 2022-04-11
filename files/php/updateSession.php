@@ -22,8 +22,12 @@ $time_worked = stripslashes($time_worked);
 if($task_name == '') $task_name = "Unnamed task";
 
 //create task if task does not exist
-$createTaskQuery = "insert ignore into task (user_id, name) values (" . $_SESSION["userID"] . ", '$task_name');";
-$sqlConnection->query($createTaskQuery) or die("Failed to save task: " . $sqlConnection->error);
+$selectTaskQuery = "select * from task where user_id = " . $_SESSION["userID"] . " and name = '$task_name';";
+$result = $sqlConnection->query($selectTaskQuery);
+if(mysqli_num_rows($result) == 0) {
+    $createTaskQuery = "insert into task (user_id, name) values (" . $_SESSION["userID"] . ", '$task_name');";
+    $sqlConnection->query($createTaskQuery) or die("Failed to save task: " . $sqlConnection->error);
+}
 
 //update session
 $createSessionQuery = "update session set task_id = (select id from task where name = '$task_name'), date_stopped = '$date_stopped', time_stopped = '$time_stopped', time_worked = '$time_worked' order by id desc limit 1;";
