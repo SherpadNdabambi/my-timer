@@ -101,12 +101,12 @@ function logout(){
 		<button id="stopButton" class="hidden" onclick="stop()"> <img id="stopIcon" src="files/images/stop.png" class="control"> </button>
 
 		<!--to pass setting variables to javascript-->
-		<input type="checkbox" id="breakReminder" name="break_reminder" class="hidden" checked="<?php echo $settings['break_reminder']; ?>">
+		<input type="checkbox" id="breakReminder" name="break_reminder" class="hidden" <?php echo ($settings['break_reminder']) ? "checked" : ''; ?>>
 		<input id="breakReminderTime" name="break_reminder_time" class="hidden" value="<?php echo $settings['break_reminder_time']; ?>">
 		<input id="longBreakTime" name="long_break_time" class="hidden" value="<?php echo $settings['long_break_time']; ?>">
-		<input type="checkbox" id="pauseReminder" name="pause_reminder" class="hidden" checked="<?php echo $settings['pause_reminder']; ?>">
+		<input type="checkbox" id="pauseReminder" name="pause_reminder" class="hidden" <?php echo ($settings['pause_reminder']) ? "checked" : ''; ?>>
 		<input id="pauseTimeLimit" name="pause_time_limit" class="hidden" value="<?php echo $settings['pause_time_limit']; ?>">
-		<input type="checkbox" id="playTickSound" name="play_tick_sound" class="hidden" checked="<?php echo $settings['play_tick_sound']; ?>">
+		<input type="checkbox" id="playTickSound" name="play_tick_sound" class="hidden" <?php echo ($settings['play_tick_sound']) ? "checked" : ''; ?>>
 		<input id="shortBreakTime" name="short_break_time" class="hidden" value="<?php echo $settings['short_break_time']; ?>">
 		<input id="timerMode" name="timer_mode" class="hidden" value="<?php echo $settings['timer_mode']; ?>">
 		<input id="workTime" name="work_time" class="hidden" value="<?php echo $settings['work_time']; ?>">
