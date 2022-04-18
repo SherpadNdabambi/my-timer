@@ -66,6 +66,7 @@ function initializeTimer(){
 	workIteration = 1;
 	phase = "Work (1/4)";
 	timeLeft = new Time(workTime.toString());
+	timeWorked = new Time();
 }
 
 function initiateNextPhase(){
