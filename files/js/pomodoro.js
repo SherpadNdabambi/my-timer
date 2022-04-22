@@ -55,8 +55,8 @@ function displayTimer(){
 
 function endSession(){
 	timer.stop();
-	saveSession();
-	initializeTimer();
+	const saveSessionPromise = saveSession();
+	saveSessionPromise.then(initializeTimer());
 	displayTimer();
 	displayButtons();
 }
@@ -149,10 +149,13 @@ function remind(message){
 }
 
 function saveSession(){
-	calculateTimeStopped();
-	document.getElementById("timeWorked").value = timeWorked;
-	if(!taskName.value) taskName.value = taskName.placeholder;
-	submitSessionForm.click();
+	return new Promise((resolve, reject) => {
+		calculateTimeStopped();
+		document.getElementById("timeWorked").value = timeWorked;
+		if(!taskName.value) taskName.value = taskName.placeholder;
+		submitSessionForm.click();
+		resolve();
+	});
 }
 
 function setSoundIcon(){
