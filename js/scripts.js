@@ -47,6 +47,17 @@ function calculateTimeStopped(){
     timeStopped = dateTime.time;
 }
 
+function checkLogin(){
+    //declare local variables
+    let loggedIn;
+
+    $.get("php/checkLogin.php", (message) =>{
+        loggedIn = (message === "User is logged in.");
+    }).then(() =>{
+        if(!loggedIn) window.location.href = "index.php";
+    });
+}
+
 function closeTaskNameDialogue(){
     taskNameDialogue.style.display = "none";
 }
@@ -107,7 +118,11 @@ function isVisible(element){
 }
 
 function logout(){
-    if(confirm("Are you sure you want to logout? Your current session will be saved.")) {
+    if(timeWorked.toString() === "00:00:00"){
+        $.post("php/logout.php");
+        window.location.href = "index.php";
+    }
+    else if(confirm("Are you sure you want to logout? Your current session will be saved.")) {
         $.post("php/logout.php");
         window.location.href = "index.php";
     }
@@ -158,7 +173,11 @@ function setSoundIcon(){
 }
 
 function setTimerMode(mode){
-    if(confirm(`Switch to ${mode} mode? Your current session will be saved.`)) {
+    if(timeWorked.toString() === "00:00:00"){
+        $.post("php/updateTimerMode.php", {timer_mode: mode});
+        window.location.href = "index.php";
+    }
+    else if(confirm(`Switch to ${mode} mode? Your current session will be saved.`)) {
         $.post("php/updateTimerMode.php", {timer_mode: mode});
         window.location.href = "index.php";
     }

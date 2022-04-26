@@ -55,7 +55,7 @@ function pause(){
 
 function start(){
     //check if user is logged in
-    //...some code
+    checkLogin();
 
     timer.start();
     if(pauseTimer.isRunning){
