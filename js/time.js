@@ -13,21 +13,21 @@ class Time{
 		
 		let timeInWords = '';
 		
-		if(this.hours != 0){
-			if(this.hours == 1) timeInWords += "1 hour";
+		if(this.hours !== 0){
+			if(this.hours === 1) timeInWords += "1 hour";
 			else timeInWords += this.hours + " hours";
 		}
-		if(this.minutes != 0){
-			if(this.hours !=0){
+		if(this.minutes !== 0){
+			if(this.hours !==0){
 				timeInWords += " ";
-				if(this.seconds != 0) timeInWords += "and ";
+				if(this.seconds !== 0) timeInWords += "and ";
 			}
-			if(this.minutes == 1) timeInWords += "1 minute";
+			if(this.minutes === 1) timeInWords += "1 minute";
 			else timeInWords += this.minutes + " minutes";
 		}
-		if(this.seconds != 0){
-			if(!(this.hours == 0 && this.minutes == 0))timeInWords += " and ";
-			if(this.seconds == 1) timeInWords += "1 second";
+		if(this.seconds !== 0){
+			if(!(this.hours === 0 && this.minutes == 0))timeInWords += " and ";
+			if(this.seconds === 1) timeInWords += "1 second";
 			else timeInWords += this.seconds + " seconds";
 		}
 		return timeInWords;
@@ -60,13 +60,6 @@ class Time{
 			this.seconds += 60;
 		}
 	}
-
-	addTime(addedTime){
-		this.hours += RHS.hours;
-		this.minutes += RHS.minutes;
-		this.seconds += RHS.seconds;
-	}
-
 	minus(RHS){
 		let result = new Time();
 
@@ -86,15 +79,8 @@ class Time{
 
 		return result;
 	}
-
-	subtractTime(subtractedTime){
-		this.hours -= RHS.hours;
-		this.minutes -= RHS.minutes;
-		this.seconds -= RHS.seconds;
-	}
-
 	times(multiplier){
-		if(multiplier == 0) return new Time();
+		if(multiplier === 0) return new Time();
 		let result = new Time(this.toString());
 		if(multiplier < 0){
 			multiplier = -multiplier;
