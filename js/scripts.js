@@ -91,7 +91,7 @@ function getSettingVariables(){
         }).then(() => {
             //assign settings to setting variables
             breakReminder = settings.break_reminder;
-            breakReminderTime = new Time(settings.break_reminder_timer);
+            breakReminderTime = new Time(settings.break_reminder_time);
             longBreakTime = new Time(settings.long_break_time);
             pauseReminder = settings.pause_reminder;
             pauseTimeLimit = new Time(settings.pause_time_limit);
