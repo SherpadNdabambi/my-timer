@@ -6,7 +6,7 @@ session_start();
 if(!$_SESSION["userID"]) header("location: login.php");
 
 //create connection to database
-$sqlConnection = new mysqli("localhost", "root", "root", "my_timer") or die("Connection failed: " .$sqlConnection->connect_error);
+$sqlConnection = new mysqli("localhost", "mysql", "mysql", "my_timer") or die("Connection failed: " .$sqlConnection->connect_error);
 
 //get username from database
 $user_id = $_SESSION["userID"];
@@ -30,10 +30,28 @@ $sqlConnection->close();
 
 <head>
 
-	<title>My Timer</title>
+	<title>Pomodoro - My Timer</title>
+
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="author" content="Sherpad Ndabambi">
+
+    <meta name="description" content="Track your work time using the pomodoro technique.">
+
+    <meta property="og:image" content="img/my-timer-icon.ico">
+
+    <meta property="og:title" content="Pomodoro - My Timer">
+
+    <meta property="og:description" content="Track your work time using the pomodoro technique.">
+
+    <meta name="twitter:title" content="Pomodoro - My Timer">
 
 	<link rel="icon" href="img/my-timer-icon.ico">
+
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
+
 	<link rel="stylesheet" type="text/css" href="css/pomodoro.css">
 
 </head>
@@ -102,7 +120,7 @@ $sqlConnection->close();
 	</div>
 
 	<!--Footer-->
-	<footer>&copy Sherpad Ndabambi <span id="year"></span></footer>
+	<footer>&copy Sherpad Ndabambi <span id="footerYear"></span></footer>
 
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script type="text/javascript">window.jQuery || document.write("<script type='text/javascript' src='js/vendor/jquery-3.6.0.min.js'><\/script>")</script>

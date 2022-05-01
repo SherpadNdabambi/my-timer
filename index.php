@@ -1,4 +1,4 @@
-<!--My Timer 2.8.2-->
+<!--My Timer 2.8.3-->
 
 <?php
 
@@ -26,3 +26,33 @@ if($_SESSION["userID"]){
 else header("location: login.php");
 
 ?>
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <title>My Timer</title>
+
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="author" content="Sherpad Ndabambi">
+
+    <meta name="description" content="My Timer allows you to track your work time using a pomodoro timer, stopwatch, or countdown timer.">
+
+    <meta property="og:image" content="img/my-timer-icon.ico">
+
+    <meta property="og:title" content="My Timer">
+
+    <meta property="og:description" content="My Timer allows you to track your work time using a pomodoro timer, stopwatch, or countdown timer.">
+
+    <meta name="twitter:title" content="My Timer">
+
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+
+</head>
+
+</html>

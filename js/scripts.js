@@ -7,7 +7,7 @@ let alarmSound = new Audio("sounds/alarm-sound.wav"), dateStarted, dateStopped, 
 //declare setting variables
 let breakReminder, breakReminderTime, longBreakTime, pauseReminder, pauseTimeLimit, playTickSound, shortBreakTime, timerMode, volume, workTime;
 
-document.addEventListener('click', function(){
+document.addEventListener('click', event => {
 
 	if(contextMenu)
         if(isVisible(contextMenu)) hide(contextMenu);
@@ -26,10 +26,11 @@ document.addEventListener('click', function(){
 
 //add context menu
 function addContextMenu(){
-	  document.addEventListener('contextmenu', function(e){
-  		breakReminderTimeSpan.innerHTML = breakReminderTime.toString("MMSS");
+	  document.addEventListener('contextmenu', event => {
+  		// noinspection JSCheckFunctionSignatures
+          breakReminderTimeSpan.innerHTML = breakReminderTime.toString("MMSS");
     	show(contextMenu);
-    	e.preventDefault();
+    	event.preventDefault();
   		contextMenu.style.setProperty('--mouse-x', event.clientX + 'px');
   		contextMenu.style.setProperty('--mouse-y', event.clientY + 'px');
   	}, false);
@@ -189,9 +190,9 @@ function setVolume(){
     $.post("php/updateVolume.php", {volume: (volume * 100)});
 }
 
-function setYear(){
+function setFooterYear(){
     let date = new Date(), year = date.getFullYear();
-    $("#year").text(year.toString());
+    $("#footerYear").text(year.toString());
 }
 
 function show(){

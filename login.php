@@ -6,8 +6,26 @@
 
 	<title>Login to My Timer</title>
 
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="author" content="Sherpad Ndabambi">
+
+    <meta name="description" content="My Timer allows you to track your work time using a pomodoro timer, stopwatch, or countdown timer.">
+
+    <meta property="og:image" content="img/my-timer-icon.ico">
+
+    <meta property="og:title" content="My Timer">
+
+    <meta property="og:description" content="My Timer allows you to track your work time using a pomodoro timer, stopwatch, or countdown timer.">
+
+    <meta name="twitter:title" content="My Timer">
+
 	<link rel="icon" href="img/my-timer-icon.ico">
+
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
+
 	<link rel="stylesheet" type="text/css" href="css/login.css">
 
 </head>
@@ -51,7 +69,7 @@
 					$sqlConnection->close();
 				}
 			?>
-			<input type="submit" name="submitButton" value="Login">
+			<input type="submit" name="loginButton" value="Login">
 
 		</form>
 

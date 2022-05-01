@@ -24,7 +24,7 @@ $(document).ready(function(){
         setVolume();
         volumeSlider.val(volume * 100);
     });
-    setYear();
+    setFooterYear();
 });
 
 function displayButtons(){

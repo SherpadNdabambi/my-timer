@@ -5,7 +5,7 @@ session_start();
 if(!$_SESSION["userID"]) header("location: login.php");
 
 //create connection to database
-$sqlConnection = new mysqli("localhost", "root", "root", "my_timer") or die("Connection failed: " .$sqlConnection->connect_error);
+$sqlConnection = new mysqli("localhost", "mysql", "mysql", "my_timer") or die("Connection failed: " .$sqlConnection->connect_error);
 
 //get username from database
 $user_id = $_SESSION["userID"];
@@ -37,15 +37,26 @@ function logout(){
 
 <head>
 
+    <title>Stopwatch - My Timer</title>
+
     <meta charset="utf-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Stopwatch - My Timer</title>
+    <meta name="author" content="Sherpad Ndabambi">
 
-    <meta name="description" content="My Timer - Stopwatch mode">
+    <meta name="description" content="Track your work time using a stopwatch.">
+
+    <meta property="og:image" content="img/my-timer-icon.ico">
+
+    <meta property="og:title" content="Stopwatch - My Timer">
+
+    <meta property="og:description" content="Track your work time using a stopwatch.">
+
+    <meta name="twitter:title" content="Stopwatch - My Timer">
 
     <link rel="stylesheet" type="text/css" href="css/styles.css">
+
     <link rel="stylesheet" type="text/css" href="css/stopwatch.css">
 
 </head>
