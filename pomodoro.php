@@ -54,6 +54,18 @@ $sqlConnection->close();
 
 	<link rel="stylesheet" type="text/css" href="css/pomodoro.css">
 
+    <script defer type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script defer type="text/javascript">window.jQuery || document.write("<script type='text/javascript' src='js/vendor/jquery-3.6.0.min.js'><\/script>")</script>
+
+    <script defer type="text/javascript" src="js/time.js"></script>
+
+    <script defer type="text/javascript" src="js/timer.js"></script>
+
+    <script defer type="text/javascript" src="js/scripts.js"></script>
+
+    <script defer type="text/javascript" src="js/pomodoro.js"></script>
+
 </head>
 
 <body>
@@ -121,13 +133,6 @@ $sqlConnection->close();
 
 	<!--Footer-->
 	<footer>&copy Sherpad Ndabambi <span id="footerYear"></span></footer>
-
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script type="text/javascript">window.jQuery || document.write("<script type='text/javascript' src='js/vendor/jquery-3.6.0.min.js'><\/script>")</script>
-    <script type="text/javascript" src="js/time.js"></script>
-    <script type="text/javascript" src="js/timer.js"></script>
-	<script type="text/javascript" src="js/scripts.js"></script>
-	<script type="text/javascript" src="js/pomodoro.js"></script>
 
 </body>
 
