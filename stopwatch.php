@@ -77,7 +77,7 @@ function logout(){
 
 <body>
 
-    <div id="wrapper" class="container">
+    <main class="container">
 
         <button id="accountButton" onclick="show(accountPanel)" class="top right"> <img id="accountIcon" alt="user icon" src="img/icons8-user-24.png"> </button>
 
@@ -174,7 +174,7 @@ function logout(){
         <!--Footer-->
         <footer>&copy Sherpad Ndabambi <span id="year"></span></footer>
 
-    </div>
+    </main>
 
 </body>
 

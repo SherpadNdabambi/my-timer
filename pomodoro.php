@@ -107,29 +107,33 @@ $sqlConnection->close();
 
 	</div>
 
-	<div class="centered">
+	<main class="container">
 
-		<div id="phaseLabel">Work (1/4)</div>
-	
-		<div id="timerDiv">25:00</div>
+        <div class="centered">
 
-        <p>
-            <input id="taskName" autocomplete="off" list="taskList" onblur="this.placeholder = 'Unnamed task';" onchange="updateTaskName();" onfocus="this.placeholder = '';" placeholder="Unnamed task">
-            <datalist id="taskList">
-                <?php foreach(array_reverse($tasklist) as $task) echo "<option value='$task[0]'></option>" ?>
-            </datalist>
-        </p>
+            <div id="phaseLabel">Work (1/4)</div>
 
-		<button id="startButton" onclick="start()"> <img id="startIcon" alt="play icon" src="img/play.png" class="control"> </button>
-		<button id="pauseButton" class="hidden" onclick="pause()"> <img id="pauseIcon" alt="pause icon" src="img/pause.png" class="control"> </button>
-		<button id="stopButton" class="hidden" onclick="stop()"> <img id="stopIcon" alt="stop icon" src="img/stop.png" class="control"> </button>
+            <div id="timerDiv">25:00</div>
 
-		<p>
-            <button id="muteButton" onclick="muteButtonClicked()"><img id="soundIcon" alt="sound icon" width="18px"></button>
-		    <input type="range" id="volumeSlider" min="0" max="100" onchange="volumeSliderChanged()">
-        </p>
+            <p>
+                <input id="taskName" autocomplete="off" list="taskList" onblur="this.placeholder = 'Unnamed task';" onchange="updateTaskName();" onfocus="this.placeholder = '';" placeholder="Unnamed task">
+                <datalist id="taskList">
+                    <?php foreach(array_reverse($tasklist) as $task) echo "<option value='$task[0]'></option>" ?>
+                </datalist>
+            </p>
 
-	</div>
+            <button id="startButton" onclick="start()"> <img id="startIcon" alt="play icon" src="img/play.png" class="control"> </button>
+            <button id="pauseButton" class="hidden" onclick="pause()"> <img id="pauseIcon" alt="pause icon" src="img/pause.png" class="control"> </button>
+            <button id="stopButton" class="hidden" onclick="stop()"> <img id="stopIcon" alt="stop icon" src="img/stop.png" class="control"> </button>
+
+            <p>
+                <button id="muteButton" onclick="muteButtonClicked()"><img id="soundIcon" alt="sound icon" width="18px"></button>
+                <input type="range" id="volumeSlider" min="0" max="100" onchange="volumeSliderChanged()">
+            </p>
+
+        </div>
+
+    </main>
 
 	<!--Footer-->
 	<footer>&copy Sherpad Ndabambi <span id="footerYear"></span></footer>

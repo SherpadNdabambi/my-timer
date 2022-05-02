@@ -36,9 +36,9 @@
 
 <body>
 
-	<div class="centered">
+	<main class="container">
 		
-		<form method="post">
+		<div id="loginForm" class="centered">
 		
 			<input name="email" placeholder="Email Address"><br><br>
 			<input type="password" name="password" placeholder="Password"><br><br>
@@ -90,9 +90,9 @@
 			?>
 			<input type="submit" name="loginButton" value="Login">
 
-		</form>
+		</div>
 
-	</div>
+	</main>
 
 </body>
 

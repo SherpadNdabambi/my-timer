@@ -111,6 +111,10 @@ footer{
 	display: none;
 }
 
+main{
+	height: calc(100vh - 100px);
+}
+
 .right{
 	position: absolute;
 	right: 0;
