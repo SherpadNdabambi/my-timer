@@ -37,38 +37,40 @@ function logout(){
 
 <head>
 
+    <!--page title-->
     <title>Stopwatch - My Timer</title>
 
+    <!--character encoding-->
     <meta charset="utf-8">
 
+    <!--device width-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!--page info-->
     <meta name="author" content="Sherpad Ndabambi">
-
     <meta name="description" content="Track your work time using a stopwatch.">
 
+    <!--og properties-->
     <meta property="og:image" content="img/my-timer-icon.ico">
-
     <meta property="og:title" content="Stopwatch - My Timer">
-
     <meta property="og:description" content="Track your work time using a stopwatch.">
 
+    <!--Twitter cards-->
     <meta name="twitter:title" content="Stopwatch - My Timer">
 
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <!--favicon-->
+    <link rel="icon" href="img/my-timer-icon.ico">
 
+    <!--stylesheets-->
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
     <link rel="stylesheet" type="text/css" href="css/stopwatch.css">
 
+    <!--scripts-->
     <script defer type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
     <script defer type="text/javascript">window.jQuery || document.write("<script type='text/javascript' src='js/vendor/jquery-3.6.0.min.js'><\/script>")</script>
-
     <script defer type="text/javascript" src="js/time.js"></script>
-
     <script defer type="text/javascript" src="js/timer.js"></script>
-
     <script defer type="text/javascript" src="js/scripts.js"></script>
-
     <script defer type="text/javascript" src="js/stopwatch.js"></script>
 
 </head>

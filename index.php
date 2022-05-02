@@ -1,5 +1,4 @@
-<!--My Timer 2.8.3-->
-
+<!--My Timer 2.8.4-->
 <?php
 
 session_start();
@@ -33,24 +32,28 @@ else header("location: login.php");
 
 <head>
 
+    <!--page title-->
     <title>My Timer</title>
 
+    <!--character encoding-->
     <meta charset="utf-8">
 
+    <!--device width-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!--page info-->
     <meta name="author" content="Sherpad Ndabambi">
-
     <meta name="description" content="My Timer allows you to track your work time using a pomodoro timer, stopwatch, or countdown timer.">
 
+    <!--og properties-->
     <meta property="og:image" content="img/my-timer-icon.ico">
-
     <meta property="og:title" content="My Timer">
-
     <meta property="og:description" content="My Timer allows you to track your work time using a pomodoro timer, stopwatch, or countdown timer.">
 
+    <!--Twitter cards-->
     <meta name="twitter:title" content="My Timer">
 
+    <!--stylesheets-->
     <link rel="stylesheet" type="text/css" href="css/styles.css">
 
 </head>
