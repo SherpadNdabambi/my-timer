@@ -38,31 +38,16 @@
 
 	<main class="container">
 		
-		<div id="loginForm" class="centered">
+		<form id="loginForm" class="center middle" method="post">
 		
 			<input name="email" placeholder="Email Address"><br><br>
 			<input type="password" name="password" placeholder="Password"><br><br>
 			<?php
 				if(isset($_POST['loginButton'])){
-                    //store connection parameters in constants
-                    define("DB_HOST", "localhost");
-                    define("DB_NAME", "my_timer");
-                    define("DB_USER", "mysql");
-                    define("DB_PASSWORD", "mysql");
-
-                    try{
-                        //establish a connection
-                        $connection = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME,DB_USER,DB_PASSWORD);
-                    }
-                    catch (Exception $ex){
-                        echo $ex->getMessage();
-                    } finally {
-                        $connection = null;
-                    }
 					//create connection to database
-					//$sqlConnection = new mysqli("localhost", "root", "root", "my_timer");// or die("Connection failed: " .$sqlConnection->connect_error);
-                    echo "PHP OK";
-					/*//get login details from form
+					$sqlConnection = new mysqli("localhost", "mysql", "mysql", "my_timer") or die("Connection failed: " .$sqlConnection->connect_error);
+
+					//get login details from form
 					$email = $_POST["email"];
 					$password = $_POST["password"];
 
@@ -85,12 +70,12 @@
 					}
 
 					//close connection to database
-					$sqlConnection->close();*/
+					$sqlConnection->close();
 				}
 			?>
 			<input type="submit" name="loginButton" value="Login">
 
-		</div>
+		</form>
 
 	</main>
 

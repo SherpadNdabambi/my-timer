@@ -4,7 +4,7 @@
 session_start();
 
 //create connection to database
-$sqlConnection = new mysqli("localhost", "root", "root", "my_timer") or die("Failed to connect to database: $sqlConnection->connect_error");
+$sqlConnection = new mysqli("localhost", "mysql", "mysql", "my_timer") or die("Failed to connect to database: $sqlConnection->connect_error");
 
 //get settings from database
 $user_id = $_SESSION["userID"];

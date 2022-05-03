@@ -4,7 +4,7 @@
 session_start();
 
 //create dataabase connection
-$sqlConnection = new mysqli("localhost", "root", "root", "my_timer") or die("Couldn't connect to database: $sqlConnection->connect_error");
+$sqlConnection = new mysqli("localhost", "mysql", "mysql", "my_timer") or die("Couldn't connect to database: $sqlConnection->connect_error");
 
 //get new timer mode from jQuery
 $timer_mode = $_POST["timer_mode"];

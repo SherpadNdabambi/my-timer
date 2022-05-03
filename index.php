@@ -1,13 +1,14 @@
-<!--My Timer 2.8.5-->
+<!--My Timer 2.8.6-->
 <?php
 
 session_start();
 
 if($_SESSION["userID"]){
 	//create connection to database
-	$sqlConnection = new mysqli("localhost", "root", "root", "my_timer") or die("Connection failed: " .$sqlConnection->connect_error);
+    $sqlConnection = new mysqli("localhost", "mysql", "mysql", "my_timer") or die("Connection failed: " .$sqlConnection->connect_error);
+    echo "PHP OK";
 
-	//get timer_mode from database
+    //get timer_mode from database
 	$user_id = $_SESSION["userID"];
 	$select_timer_mode_query = "select timer_mode from settings where id = '$user_id'";
 	$result = $sqlConnection->query($select_timer_mode_query);

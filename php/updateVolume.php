@@ -4,7 +4,7 @@
 session_start();
 
 //create database connection
-$sqlConnection = new mysqli("localhost", "root", "root", "my_timer") or die("Connection failed: " .$sqlConnection->connect_error);
+$sqlConnection = new mysqli("localhost", "mysql", "mysql", "my_timer") or die("Connection failed: " .$sqlConnection->connect_error);
 
 //get volume from slider
 $volume = $_POST["volume"];

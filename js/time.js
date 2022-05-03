@@ -26,7 +26,7 @@ class Time{
 			else timeInWords += this.minutes + " minutes";
 		}
 		if(this.seconds !== 0){
-			if(!(this.hours === 0 && this.minutes == 0))timeInWords += " and ";
+			if(!(this.hours === 0 && this.minutes === 0))timeInWords += " and ";
 			if(this.seconds === 1) timeInWords += "1 second";
 			else timeInWords += this.seconds + " seconds";
 		}
